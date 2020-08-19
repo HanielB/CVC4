@@ -684,7 +684,12 @@ void Solver::removeClause(CRef cr) {
         Debug("pf::sat")
             << "Solver::removeClause: eagerly compute propagation of " << c[0]
             << "\n";
-        d_pfManager->tryJustifyingLit(MinisatSatSolver::toSatLiteral(c[0]));
+        d_pfManager->startResChain(c);
+        for (unsigned i = 1, size = c.size(); i < size; ++i)
+        {
+          d_pfManager->addResolutionStep(c[i]);
+        }
+        d_pfManager->endResChain(c[0]);
       }
       vardata[var(c[0])].d_reason = CRef_Undef;
     }
