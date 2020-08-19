@@ -279,8 +279,9 @@ bool CDProof::addProof(std::shared_ptr<ProofNode> pn,
     std::shared_ptr<ProofNode> cur = getProofSymm(curFact);
     if (cur == nullptr)
     {
-      Trace("cdproof") << "...simple, add " << this << " since no proof of "
-                       << curFact << std::endl;
+      Trace("cdproof")
+          << "...simple, add given proof since no previous proof of " << curFact
+          << std::endl;
       // Assert that the checker of this class agrees with (the externally
       // provided) pn. This ensures that if pn was checked by a different
       // checker than the one of the manager in this class, then it is double
