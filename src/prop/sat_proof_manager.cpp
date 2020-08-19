@@ -261,8 +261,24 @@ void SatProofManager::tryJustifyingLit(
     if (it != d_clauseProofs.end())
     {
       Trace("sat-proof")
-          << "SatProofManager::tryJustifyingLit:   retrieve previous proof\n";
-      d_proof.addProof(it->second);
+          << "SatProofManager::tryJustifyingLit:   found previous proof";
+      Trace("sat-proof-debug") << *it->second.get();
+      Trace("sat-proof") << "\n";
+      d_proof.addProof(it->second, CDPOverwrite::ASSUME_ONLY, true);
+      Trace("sat-proof") << "SatProofManager::tryJustifyingLit:   try "
+                            "justifying proof children\n";
+      const std::vector<std::shared_ptr<ProofNode>>& proofChildren =
+          it->second->getChildren();
+      for (unsigned i = 0, size = proofChildren.size(); i < size; ++i)
+      {
+        auto itt = d_proxy->getCnfStream()->getTranslationCache().find(
+            proofChildren[i]->getResult());
+        if (itt != d_proxy->getCnfStream()
+                             ->getTranslationCache().end())
+        {
+          tryJustifyingLit(itt->second, assumptions);
+        }
+      }
     }
     Trace("sat-proof") << CVC4::pop;
     return;
@@ -361,7 +377,21 @@ void SatProofManager::tryJustifyingLit(
     {
       Trace("sat-proof")
           << "SatProofManager::tryJustifyingLit:   retrieve previous proof\n";
-      d_proof.addProof(it->second);
+      d_proof.addProof(it->second, CDPOverwrite::ASSUME_ONLY, true);
+      Trace("sat-proof") << "SatProofManager::tryJustifyingLit:   try "
+                            "justifying proof children\n";
+      const std::vector<std::shared_ptr<ProofNode>>& proofChildren =
+          it->second->getChildren();
+      for (unsigned i = 0, size = proofChildren.size(); i < size; ++i)
+      {
+        auto itt = d_proxy->getCnfStream()->getTranslationCache().find(
+            proofChildren[i]->getResult());
+        if (itt != d_proxy->getCnfStream()
+                             ->getTranslationCache().end())
+        {
+          tryJustifyingLit(itt->second, assumptions);
+        }
+      }
     }
     Trace("sat-proof") << CVC4::pop;
     return;
