@@ -238,6 +238,57 @@ void SatProofManager::endResChain(Node conclusion)
   d_clauseProofs[conclusion] = conclusionProof.getProofFor(conclusion)->clone();
 }
 
+void SatProofManager::tryJustifyingClauseNode(
+    Node clauseNode, std::unordered_set<TNode, TNodeHashFunction>& assumptions)
+{
+  Trace("sat-proof")
+      << "SatProofManager::tryJustifyingClauseNode: check if stored proof of "
+      << clauseNode << "\n";
+  std::map<Node, std::shared_ptr<ProofNode>>::const_iterator it =
+      d_clauseProofs.find(clauseNode);
+  if (it == d_clauseProofs.end())
+  {
+    Trace("sat-proof")
+        << "SatProofManager::tryJustifyingClauseNode: no stored proof\n";
+    return;
+  }
+  Trace("sat-proof")
+      << "SatProofManager::tryJustifyingClauseNode: found previous proof";
+  Trace("sat-proof-debug") << *it->second.get();
+  Trace("sat-proof") << "\n";
+  d_proof.addProof(it->second, CDPOverwrite::ASSUME_ONLY, true);
+  std::shared_ptr<ProofNode> resPfn = it->second;
+  // in case of factoring
+  if (resPfn->getRule() == PfRule::FACTORING)
+  {
+    Trace("sat-proof") << "SatProofManager::tryJustifyingClauseNode: try "
+                          "justifying facoring's proof children\n";
+    resPfn = resPfn->getChildren()[0];
+  }
+  else
+  {
+    Trace("sat-proof") << "SatProofManager::tryJustifyingClauseNode: try "
+                          "justifying proof children\n";
+  }
+  const std::vector<std::shared_ptr<ProofNode>>& proofChildren =
+      resPfn->getChildren();
+  for (unsigned i = 0, size = proofChildren.size(); i < size; ++i)
+  {
+    Node premise = proofChildren[i]->getResult();
+    auto itt = d_proxy->getCnfStream()->getTranslationCache().find(premise);
+    if (itt != d_proxy->getCnfStream()->getTranslationCache().end())
+    {
+      tryJustifyingLit(itt->second, assumptions);
+    }
+    else
+    {
+      Trace("sat-proof") << CVC4::push;
+      tryJustifyingClauseNode(premise, assumptions);
+      Trace("sat-proof") << CVC4::pop;
+    }
+  }
+}
+
 void SatProofManager::tryJustifyingLit(SatLiteral lit)
 {
   std::unordered_set<TNode, TNodeHashFunction> assumptions;
@@ -262,48 +313,9 @@ void SatProofManager::tryJustifyingLit(
   if (reasonRef == Minisat::Solver::TCRef_Undef)
   {
     Trace("sat-proof") << "SatProofManager::tryJustifyingLit: no SAT reason\n";
-    std::map<Node, std::shared_ptr<ProofNode>>::const_iterator it =
-        d_clauseProofs.find(litNode);
-    if (it != d_clauseProofs.end())
-    {
-      Trace("sat-proof")
-          << "SatProofManager::tryJustifyingLit:   found previous proof";
-      Trace("sat-proof-debug") << *it->second.get();
-      Trace("sat-proof") << "\n";
-      d_proof.addProof(it->second, CDPOverwrite::ASSUME_ONLY, true);
-      std::shared_ptr<ProofNode> resPfn = it->second;
-      // in case of factoring
-      if (resPfn->getRule() == PfRule::FACTORING)
-      {
-        Trace("sat-proof") << "SatProofManager::tryJustifyingLit:   try "
-                              "justifying facoring's proof children\n";
-        resPfn = resPfn->getChildren()[0];
-      }
-      else
-      {
-        Trace("sat-proof") << "SatProofManager::tryJustifyingLit:   try "
-                              "justifying proof children\n";
-      }
-      const std::vector<std::shared_ptr<ProofNode>>& proofChildren =
-          resPfn->getChildren();
-      for (unsigned i = 0, size = proofChildren.size(); i < size; ++i)
-      {
-        auto itt = d_proxy->getCnfStream()->getTranslationCache().find(
-            proofChildren[i]->getResult());
-        if (itt != d_proxy->getCnfStream()
-                             ->getTranslationCache().end())
-        {
-          tryJustifyingLit(itt->second, assumptions);
-        }
-        else
-        {
-          Trace("sat-proof") << "SatProofManager::tryJustifyingLit:     " << i
-                             << "-th child " << proofChildren[i]->getResult()
-                             << " has no lit, maybe has proof?\n";
-        }
-      }
-    }
-    Trace("sat-proof") << CVC4::pop;
+    Trace("sat-proof") << CVC4::push;
+    tryJustifyingClauseNode(litNode, assumptions);
+    Trace("sat-proof") << CVC4::pop << CVC4::pop;
     return;
   }
   Assert(reasonRef >= 0 && reasonRef < d_solver->ca.size())
@@ -394,29 +406,9 @@ void SatProofManager::tryJustifyingLit(
   {
     Trace("sat-proof") << "SatProofManager::tryJustifyingLit: CYCLIC PROOF of "
                        << lit << " [" << litNode << "], ABORT\n";
-    std::map<Node, std::shared_ptr<ProofNode>>::const_iterator it =
-        d_clauseProofs.find(litNode);
-    if (it != d_clauseProofs.end())
-    {
-      Trace("sat-proof")
-          << "SatProofManager::tryJustifyingLit:   retrieve previous proof\n";
-      d_proof.addProof(it->second, CDPOverwrite::ASSUME_ONLY, true);
-      Trace("sat-proof") << "SatProofManager::tryJustifyingLit:   try "
-                            "justifying proof children\n";
-      const std::vector<std::shared_ptr<ProofNode>>& proofChildren =
-          it->second->getChildren();
-      for (unsigned i = 0, size = proofChildren.size(); i < size; ++i)
-      {
-        auto itt = d_proxy->getCnfStream()->getTranslationCache().find(
-            proofChildren[i]->getResult());
-        if (itt != d_proxy->getCnfStream()
-                             ->getTranslationCache().end())
-        {
-          tryJustifyingLit(itt->second, assumptions);
-        }
-      }
-    }
-    Trace("sat-proof") << CVC4::pop;
+    Trace("sat-proof") << CVC4::push;
+    tryJustifyingClauseNode(litNode, assumptions);
+    Trace("sat-proof") << CVC4::pop << CVC4::pop;
     return;
   }
   d_proof.addStep(litNode,

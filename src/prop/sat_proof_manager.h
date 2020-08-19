@@ -75,6 +75,10 @@ class SatProofManager
 
   void tryJustifyingLit(prop::SatLiteral lit);
 
+  void tryJustifyingClauseNode(
+      Node clauseNode,
+      std::unordered_set<TNode, TNodeHashFunction>& assumptions);
+
   void finalizeProof(Node inConflictNode,
                      const std::vector<SatLiteral>& inConflict);
   void finalizeProof(Minisat::Clause& inConflict);
