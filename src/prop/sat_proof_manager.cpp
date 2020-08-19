@@ -251,6 +251,12 @@ void SatProofManager::tryJustifyingLit(
   Trace("sat-proof") << CVC4::push
                      << "SatProofManager::tryJustifyingLit: Lit: " << lit
                      << " [" << litNode << "]\n";
+  // if (d_proof.hasStep(litNode))
+  // {
+  //   Trace("sat-proof") << "SatProofManager::tryJustifyingLit:   already "
+  //                         "justified in final proof\n";
+  //   return;
+  // }
   Minisat::Solver::TCRef reasonRef =
       d_solver->reason(Minisat::var(MinisatSatSolver::toMinisatLit(lit)));
   if (reasonRef == Minisat::Solver::TCRef_Undef)
@@ -265,10 +271,21 @@ void SatProofManager::tryJustifyingLit(
       Trace("sat-proof-debug") << *it->second.get();
       Trace("sat-proof") << "\n";
       d_proof.addProof(it->second, CDPOverwrite::ASSUME_ONLY, true);
-      Trace("sat-proof") << "SatProofManager::tryJustifyingLit:   try "
-                            "justifying proof children\n";
+      std::shared_ptr<ProofNode> resPfn = it->second;
+      // in case of factoring
+      if (resPfn->getRule() == PfRule::FACTORING)
+      {
+        Trace("sat-proof") << "SatProofManager::tryJustifyingLit:   try "
+                              "justifying facoring's proof children\n";
+        resPfn = resPfn->getChildren()[0];
+      }
+      else
+      {
+        Trace("sat-proof") << "SatProofManager::tryJustifyingLit:   try "
+                              "justifying proof children\n";
+      }
       const std::vector<std::shared_ptr<ProofNode>>& proofChildren =
-          it->second->getChildren();
+          resPfn->getChildren();
       for (unsigned i = 0, size = proofChildren.size(); i < size; ++i)
       {
         auto itt = d_proxy->getCnfStream()->getTranslationCache().find(
@@ -277,6 +294,12 @@ void SatProofManager::tryJustifyingLit(
                              ->getTranslationCache().end())
         {
           tryJustifyingLit(itt->second, assumptions);
+        }
+        else
+        {
+          Trace("sat-proof") << "SatProofManager::tryJustifyingLit:     " << i
+                             << "-th child " << proofChildren[i]->getResult()
+                             << " has no lit, maybe has proof?\n";
         }
       }
     }

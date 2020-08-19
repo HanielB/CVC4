@@ -1,4 +1,8 @@
-./debug/bin/cvc4 ~/cvc/wt-proofnew/test/regress/regress0/bt-test-01.smt2 -t sat-proof -t cnf -d cnf  --proof-new-eager-checking --dag-thresh=0 -d pf::sat
+./debug/bin/cvc4 ~/cvc/wt-proofnew/test/regress/regress0/bt-test-01.smt2 -t sat-proof -t cnf -d cnf  --proof-new-eager-checking --dag-thresh=0 -d pf::sat -d minisat::remove-clause -d minisat -d minisat::lemmas
+new var 0
+new var 1
+unchecked enqueue of  0 (-1) trail size is 0 cap is 2, reason is 4294967295, CRef_Undef
+unchecked enqueue of ~1 (-1) trail size is 1 cap is 2, reason is 4294967295, CRef_Undef
 convertAndAssert(true, removable = false, negated = false)
 convertAndAssert(true, negated = false)
 toCNF(true, negated = false)
@@ -20,21 +24,26 @@ convertAtom(false)
 Inserting into stream clause: ~1; node = (not false)
 ProofCnfStream::convertAndAssert((or x0 y0), removable = false, negated = false)
 ProofCnfStream::convertAndAssert((or x0 y0), negated = false)
+ProofCnfStream::convertAndAssertOr((or x0 y0), negated = false)
 toCNF(x0, negated = false)
 convertAtom(x0)
 ::newLiteral(x0, 0)
   ::newLiteral: node already registered
   ::newLiteral: new var
+  new var 2
   newLiteral(x0) => 2
 toCNF(y0, negated = false)
 convertAtom(y0)
 ::newLiteral(y0, 0)
   ::newLiteral: node already registered
   ::newLiteral: new var
+  new var 3
   newLiteral(y0) => 3
 Inserting into stream clause: 2 3; node = (or x0 y0)
+Solver::attachClause(0x7fbd102a8028):  2  3 , level 0
 ProofCnfStream::convertAndAssert((or (not y0) z0), removable = false, negated = false)
 ProofCnfStream::convertAndAssert((or (not y0) z0), negated = false)
+ProofCnfStream::convertAndAssertOr((or (not y0) z0), negated = false)
 toCNF((not y0), negated = false)
 toCNF(): already translated
 CnfStream::getLiteral((not y0)) => ~3
@@ -43,8 +52,10 @@ convertAtom(z0)
 ::newLiteral(z0, 0)
   ::newLiteral: node already registered
   ::newLiteral: new var
+  new var 4
   newLiteral(z0) => 4
 Inserting into stream clause: ~3 4; node = (or (not y0) z0)
+Solver::attachClause(0x7fbd102a803c): ~3  4 , level 0
 ProofCnfStream::convertAndAssert(x1, removable = false, negated = false)
 ProofCnfStream::convertAndAssert(x1, negated = false)
 toCNF(x1, negated = false)
@@ -52,8 +63,10 @@ convertAtom(x1)
 ::newLiteral(x1, 0)
   ::newLiteral: node already registered
   ::newLiteral: new var
+  new var 5
   newLiteral(x1) => 5
 Inserting into stream clause: 5; node = x1
+unchecked enqueue of  5 (-1) trail size is 2 cap is 8, reason is 4294967295, CRef_Undef
 ProofCnfStream::convertAndAssert(y1, removable = false, negated = false)
 ProofCnfStream::convertAndAssert(y1, negated = false)
 toCNF(y1, negated = false)
@@ -61,25 +74,34 @@ convertAtom(y1)
 ::newLiteral(y1, 0)
   ::newLiteral: node already registered
   ::newLiteral: new var
+  new var 6
   newLiteral(y1) => 6
 Inserting into stream clause: 6; node = y1
+unchecked enqueue of  6 (-1) trail size is 3 cap is 8, reason is 4294967295, CRef_Undef
 ProofCnfStream::convertAndAssert((not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))), removable = false, negated = false)
 ProofCnfStream::convertAndAssert((not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))), negated = false)
 ProofCnfStream::convertAndAssert((= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)), negated = true)
-toCNF((f BOOLEAN_TERM_VARIABLE_294), negated = false)
-convertAtom((f BOOLEAN_TERM_VARIABLE_294))
-::newLiteral((f BOOLEAN_TERM_VARIABLE_294), 1)
-  ::newLiteral: node already registered
-  ::newLiteral: new var
-  newLiteral((f BOOLEAN_TERM_VARIABLE_294)) => 7
-toCNF((f BOOLEAN_TERM_VARIABLE_309), negated = false)
-convertAtom((f BOOLEAN_TERM_VARIABLE_309))
-::newLiteral((f BOOLEAN_TERM_VARIABLE_309), 1)
-  ::newLiteral: node already registered
-  ::newLiteral: new var
-  newLiteral((f BOOLEAN_TERM_VARIABLE_309)) => 8
+ProofCnfStream::convertAndAssertIff((= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)), negated = true)
+  toCNF((f BOOLEAN_TERM_VARIABLE_294), negated = false)
+  convertAtom((f BOOLEAN_TERM_VARIABLE_294))
+  ::newLiteral((f BOOLEAN_TERM_VARIABLE_294), 1)
+    ::newLiteral: node already registered
+    ::newLiteral: new var
+    new var 7
+    newLiteral((f BOOLEAN_TERM_VARIABLE_294)) => 7
+  toCNF((f BOOLEAN_TERM_VARIABLE_309), negated = false)
+  convertAtom((f BOOLEAN_TERM_VARIABLE_309))
+  ::newLiteral((f BOOLEAN_TERM_VARIABLE_309), 1)
+    ::newLiteral: node already registered
+    ::newLiteral: new var
+    new var 8
+    newLiteral((f BOOLEAN_TERM_VARIABLE_309)) => 8
 Inserting into stream clause: ~7 ~8; node = (not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))
+Solver::attachClause(0x7fbd102a8050): ~7 ~8 , level 0
+ProofCnfStream::convertAndAssertIff: NOT_EQUIV_ELIM2 added norm (or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309)))
 Inserting into stream clause: 7 8; node = (not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))
+Solver::attachClause(0x7fbd102a8064):  7  8 , level 0
+ProofCnfStream::convertAndAssertIff: NOT_EQUIV_ELIM1 added norm (or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
 ProofCnfStream::convertAndAssert(true, removable = false, negated = false)
 ProofCnfStream::convertAndAssert(true, negated = false)
 toCNF(true, negated = false)
@@ -88,83 +110,92 @@ CnfStream::getLiteral(true) => 0
 Inserting into stream clause: 0; node = true
 ProofCnfStream::convertAndAssert((= BOOLEAN_TERM_VARIABLE_294 (or x0 z0)), removable = false, negated = false)
 ProofCnfStream::convertAndAssert((= BOOLEAN_TERM_VARIABLE_294 (or x0 z0)), negated = false)
-toCNF(BOOLEAN_TERM_VARIABLE_294, negated = false)
-convertAtom(BOOLEAN_TERM_VARIABLE_294)
-::newLiteral(BOOLEAN_TERM_VARIABLE_294, 1)
-  ::newLiteral: node already registered
-  ::newLiteral: new var
-  newLiteral(BOOLEAN_TERM_VARIABLE_294) => 9
-toCNF((or x0 z0), negated = false)
-toCNF(x0, negated = false)
-toCNF(): already translated
-CnfStream::getLiteral(x0) => 2
-toCNF(z0, negated = false)
-toCNF(): already translated
-CnfStream::getLiteral(z0) => 4
-::newLiteral((or x0 z0), 0)
-  ::newLiteral: node already registered
-  ::newLiteral: new var
-  newLiteral((or x0 z0)) => 10
-Inserting into stream clause: 10 ~2; node = (or x0 z0)
-Inserting into stream clause: 10 ~4; node = (or x0 z0)
-Inserting into stream clause: 2 4 ~10; node = (not (or x0 z0))
+ProofCnfStream::convertAndAssertIff((= BOOLEAN_TERM_VARIABLE_294 (or x0 z0)), negated = false)
+  toCNF(BOOLEAN_TERM_VARIABLE_294, negated = false)
+  convertAtom(BOOLEAN_TERM_VARIABLE_294)
+  ::newLiteral(BOOLEAN_TERM_VARIABLE_294, 1)
+    ::newLiteral: node already registered
+    ::newLiteral: new var
+    new var 9
+    newLiteral(BOOLEAN_TERM_VARIABLE_294) => 9
+  toCNF((or x0 z0), negated = false)
+  toCNF(x0, negated = false)
+  toCNF(): already translated
+  CnfStream::getLiteral(x0) => 2
+  toCNF(z0, negated = false)
+  toCNF(): already translated
+  CnfStream::getLiteral(z0) => 4
+  ::newLiteral((or x0 z0), 0)
+    ::newLiteral: node already registered
+    ::newLiteral: new var
+    new var 10
+    newLiteral((or x0 z0)) => 10
+  Inserting into stream clause: 10 ~2; node = (or x0 z0)
+  Solver::attachClause(0x7fbd102a8078):   ~2    10   , level 0
+  Inserting into stream clause: 10 ~4; node = (or x0 z0)
+  Solver::attachClause(0x7fbd102a808c):   ~4    10   , level 0
+  Inserting into stream clause: 2 4 ~10; node = (not (or x0 z0))
+  Solver::attachClause(0x7fbd102a80a0):    2    4   ~10   , level 0
 Inserting into stream clause: ~9 10; node = (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))
+Solver::attachClause(0x7fbd102a80b8): ~9  10 , level 0
 Inserting into stream clause: 9 ~10; node = (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))
+Solver::attachClause(0x7fbd102a80cc):  9 ~10 , level 0
 ProofCnfStream::convertAndAssert((= BOOLEAN_TERM_VARIABLE_309 (and x1 y1)), removable = false, negated = false)
 ProofCnfStream::convertAndAssert((= BOOLEAN_TERM_VARIABLE_309 (and x1 y1)), negated = false)
-toCNF(BOOLEAN_TERM_VARIABLE_309, negated = false)
-convertAtom(BOOLEAN_TERM_VARIABLE_309)
-::newLiteral(BOOLEAN_TERM_VARIABLE_309, 1)
-  ::newLiteral: node already registered
-  ::newLiteral: new var
-  newLiteral(BOOLEAN_TERM_VARIABLE_309) => 11
-toCNF((and x1 y1), negated = false)
-toCNF(x1, negated = false)
-toCNF(): already translated
-CnfStream::getLiteral(x1) => 5
-toCNF(y1, negated = false)
-toCNF(): already translated
-CnfStream::getLiteral(y1) => 6
-::newLiteral((and x1 y1), 0)
-  ::newLiteral: node already registered
-  ::newLiteral: new var
-  newLiteral((and x1 y1)) => 12
-Inserting into stream clause: ~12 5; node = (not (and x1 y1))
-Inserting into stream clause: ~12 6; node = (not (and x1 y1))
-Inserting into stream clause: ~5 ~6 12; node = (and x1 y1)
+ProofCnfStream::convertAndAssertIff((= BOOLEAN_TERM_VARIABLE_309 (and x1 y1)), negated = false)
+  toCNF(BOOLEAN_TERM_VARIABLE_309, negated = false)
+  convertAtom(BOOLEAN_TERM_VARIABLE_309)
+  ::newLiteral(BOOLEAN_TERM_VARIABLE_309, 1)
+    ::newLiteral: node already registered
+    ::newLiteral: new var
+    new var 11
+    newLiteral(BOOLEAN_TERM_VARIABLE_309) => 11
+  toCNF((and x1 y1), negated = false)
+  handleAnd((and x1 y1))
+    toCNF(x1, negated = false)
+    toCNF(): already translated
+    CnfStream::getLiteral(x1) => 5
+    toCNF(y1, negated = false)
+    toCNF(): already translated
+    CnfStream::getLiteral(y1) => 6
+  ::newLiteral((and x1 y1), 0)
+    ::newLiteral: node already registered
+    ::newLiteral: new var
+    new var 12
+    newLiteral((and x1 y1)) => 12
+    Inserting into stream clause: ~12 5; node = (not (and x1 y1))
+    Inserting into stream clause: ~12 6; node = (not (and x1 y1))
+    Inserting into stream clause: ~5 ~6 12; node = (and x1 y1)
+    Solver::attachClause(0x7fbd102a80e0):      12     ~6     ~5     , level 0
+    unchecked enqueue of  12 (-1) trail size is 4 cap is 14, reason is 50,      12     ~6     ~5
+  ProofCnfStream::handleAnd: CNF_AND_NEG added norm (or (and x1 y1) (not x1) (not y1))
 Inserting into stream clause: ~11 12; node = (= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))
 Inserting into stream clause: 11 ~12; node = (= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))
+Solver::attachClause(0x7fbd102a80f8):  11 ~12 , level 0
+unchecked enqueue of  11 (-1) trail size is 5 cap is 14, reason is 56,  11 ~12
 getNode(11)
 getNode(11) => BOOLEAN_TERM_VARIABLE_309
-Solver::removeClause: eagerly compute propagation of  12
-SatProofManager::startResChain: 12 ~6
-SatProofManager::addResolutionStep: [~6] 6
-SatProofManager::endResChain: chain_res for 12, (and x1 y1)
-SatProofManager::endResChain:   12, ~6 : (or (and x1 y1) (not y1))
-SatProofManager::endResChain:   [~6] 6 : [(not y1)] y1
-SatProofManager::endResChain: creating step for computed conclusion (and x1 y1)
-Solver::removeClause: eagerly compute propagation of  11
-SatProofManager::startResChain: 11 ~12
-SatProofManager::addResolutionStep: [~12] 12
-SatProofManager::endResChain: chain_res for 11, BOOLEAN_TERM_VARIABLE_309
-SatProofManager::endResChain:   11, ~12 : (or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1)))
-SatProofManager::endResChain:   [~12] 12 : [(not (and x1 y1))] (and x1 y1)
-SatProofManager::endResChain: creating step for computed conclusion BOOLEAN_TERM_VARIABLE_309
+nvars = 13
+old trail size is 6, propagating 0 lits...
+unchecked enqueue of ~2 (-1) trail size is 6 cap is 14, reason is 4294967295, CRef_Undef
+unchecked enqueue of  3 (-1) trail size is 7 cap is 14, reason is 4,  3  2
+unchecked enqueue of  4 (-1) trail size is 8 cap is 14, reason is 9,  4 ~3
+unchecked enqueue of  10 (-1) trail size is 9 cap is 14, reason is 29,  10 ~4
+unchecked enqueue of  9 (-1) trail size is 10 cap is 14, reason is 45,  9 ~10
 getNode(9)
 getNode(9) => BOOLEAN_TERM_VARIABLE_294
-Solver::removeClause: eagerly compute propagation of  9
-SatProofManager::startResChain: 9 ~10
-SatProofManager::addResolutionStep: [~10] 10
-SatProofManager::endResChain: chain_res for 9, BOOLEAN_TERM_VARIABLE_294
-SatProofManager::endResChain:   9, ~10 : (or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0)))
-SatProofManager::endResChain:   [~10] 10 : [(not (or x0 z0))] (or x0 z0)
-SatProofManager::endResChain: creating step for computed conclusion BOOLEAN_TERM_VARIABLE_294
+old trail size is 11, propagating 0 lits...
+unchecked enqueue of ~8 (-1) trail size is 11 cap is 14, reason is 4294967295, CRef_Undef
 getNode(~8)
 getNode(~8) => (not (f BOOLEAN_TERM_VARIABLE_309))
+unchecked enqueue of  7 (-1) trail size is 12 cap is 14, reason is 19,  7  8
 getNode(7)
 getNode(7) => (f BOOLEAN_TERM_VARIABLE_294)
 CnfStream::getLiteral((not (f BOOLEAN_TERM_VARIABLE_294))) => ~7
 CnfStream::getLiteral((not (f BOOLEAN_TERM_VARIABLE_294))) => ~7
+old trail size is 13, propagating 1 lits...
+Theory propagated: ~7
+Conflict in theory propagation
 getNode(~7)
 getNode(~7) => (not (f BOOLEAN_TERM_VARIABLE_294))
 ProofCnfStream::convertPropagation: proven explanation(=> (and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294)))
@@ -182,29 +213,59 @@ getNode(~9)
 getNode(~9) => (not BOOLEAN_TERM_VARIABLE_294)
 TheoryProxy::explainPropagation: clause for lit is ~7 [(not (f BOOLEAN_TERM_VARIABLE_294))] 8 [(f BOOLEAN_TERM_VARIABLE_309)] ~11 [(not BOOLEAN_TERM_VARIABLE_309)] ~9 [(not BOOLEAN_TERM_VARIABLE_294)]
 Add clause adding a new lemma: ~7  8 ~9 ~11
+Solver::updateLemmas() begin
 Solver::updateLemmas: working on lemma: ~7  8 ~9 ~11
+found unit 4
+Solver::updateLemmas(): backtracking to 2 from 2
+minisat::cancelUntil(2)
+Solver::attachClause(0x7fbd102a810c): ~7  8 ~9 ~11 , level 0
 Solver::updateLemmas: unit theory lemma: ~7
+Solver::updateLemmas(): conflict
+Solver::updateLemmas() end
 SatProofManager::startResChain: ~7 8 ~9 ~11
-SatProofManager::addResolutionStep: [~9] 9
 SatProofManager::addResolutionStep: [~11] 11
 Solver::reason(7)
-  Solver::reason: 5,  7  8
+  Solver::reason: 19,  7  8
 SatProofManager::addResolutionStep: [~7] 7 8
 SatProofManager::addResolutionStep: (or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
 Solver::reason(8)
   Solver::reason: 4294967295, CRef_Undef
+Solver::reason(9)
+  Solver::reason: 45,  9 ~10
+Solver::reason(9)
+  Solver::reason: 45,  9 ~10
+Solver::reason(10)
+  Solver::reason: 29,  10 ~4
+Solver::reason(10)
+  Solver::reason: 29,  10 ~4
+Solver::reason(4)
+  Solver::reason: 9,  4 ~3
+Solver::reason(4)
+  Solver::reason: 9,  4 ~3
+Solver::reason(3)
+  Solver::reason: 4,  3  2
+Solver::reason(3)
+  Solver::reason: 4,  3  2
+Solver::reason(2)
+  Solver::reason: 4294967295, CRef_Undef
+minisat::cancelUntil(1)
+Solver::attachClause(0x7fbd102a8128):  8 ~9 , level 0
+unchecked enqueue of  8 (-1) trail size is 11 cap is 14, reason is 68,  8 ~9
 getNode(8)
 getNode(8) => (f BOOLEAN_TERM_VARIABLE_309)
-SatProofManager::endResChain: chain_res for 8, (f BOOLEAN_TERM_VARIABLE_309)
+SatProofManager::endResChain: chain_res for 8 ~9 , (or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294))
 SatProofManager::endResChain:   8, ~7, ~9, ~11 : (or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
-SatProofManager::endResChain:   [~9] 9 : [(not BOOLEAN_TERM_VARIABLE_294)] BOOLEAN_TERM_VARIABLE_294
 SatProofManager::endResChain:   [~11] 11 : [(not BOOLEAN_TERM_VARIABLE_309)] BOOLEAN_TERM_VARIABLE_309
 SatProofManager::endResChain:   [~7] 7, 8 : [(not (f BOOLEAN_TERM_VARIABLE_294))] (or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
-SatProofManager::endResChain: creating step for computed conclusion (or (f BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_309))
+SatProofManager::endResChain: creating step for computed conclusion (or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
+unchecked enqueue of ~7 (-1) trail size is 12 cap is 14, reason is 14, ~7 ~8
 getNode(~7)
 getNode(~7) => (not (f BOOLEAN_TERM_VARIABLE_294))
 CnfStream::getLiteral((f BOOLEAN_TERM_VARIABLE_294)) => 7
 CnfStream::getLiteral((f BOOLEAN_TERM_VARIABLE_294)) => 7
+old trail size is 13, propagating 1 lits...
+Theory propagated:  7
+Conflict in theory propagation
 getNode(7)
 getNode(7) => (f BOOLEAN_TERM_VARIABLE_294)
 ProofCnfStream::convertPropagation: proven explanation(=> (and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_294))
@@ -222,99 +283,119 @@ getNode(~9)
 getNode(~9) => (not BOOLEAN_TERM_VARIABLE_294)
 TheoryProxy::explainPropagation: clause for lit is 7 [(f BOOLEAN_TERM_VARIABLE_294)] ~8 [(not (f BOOLEAN_TERM_VARIABLE_309))] ~11 [(not BOOLEAN_TERM_VARIABLE_309)] ~9 [(not BOOLEAN_TERM_VARIABLE_294)]
 Add clause adding a new lemma:  7 ~8 ~9 ~11
+Solver::updateLemmas() begin
 Solver::updateLemmas: working on lemma:  7 ~8 ~9 ~11
+found unit 4
+Solver::updateLemmas(): backtracking to 1 from 1
+minisat::cancelUntil(1)
+Solver::attachClause(0x7fbd102a813c):  7 ~8 ~9 ~11 , level 0
 Solver::updateLemmas: unit theory lemma:  7
-SatProofManager::finalizeProof: conflicting clause: 7 ~8 ~9 ~11
-SatProofManager::finalizeProof: conflicting clause node: (or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
-    SatProofManager::tryJustifyingLit: Lit: ~7 [(not (f BOOLEAN_TERM_VARIABLE_294))]
-    Solver::reason(7)
-      Solver::reason: 0,     ~7     ~8
-    SatProofManager::tryJustifyingLit: with clause:     ~7     ~8
-        SatProofManager::tryJustifyingLit: Lit: 8 [(f BOOLEAN_TERM_VARIABLE_309)]
-        Solver::reason(8)
-          Solver::reason: 4294967295,         CRef_Undef
-        SatProofManager::tryJustifyingLit: no SAT reason
-        SatProofManager::tryJustifyingLit:   found previous proof
-        SatProofManager::tryJustifyingLit:   try justifying proof children
-    SatProofManager::tryJustifyingLit: chain_res for ~7, (not (f BOOLEAN_TERM_VARIABLE_294)) with clauses:
-    SatProofManager::tryJustifyingLit:   (or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309)))
-    SatProofManager::tryJustifyingLit:   (f BOOLEAN_TERM_VARIABLE_309)     [(not (f BOOLEAN_TERM_VARIABLE_309))]
+Solver::updateLemmas(): conflict
+Solver::updateLemmas() end
+SatProofManager::startResChain: 7 ~8 ~9 ~11
+SatProofManager::addResolutionStep: [~11] 11
+Solver::reason(7)
+  Solver::reason: 14, ~7 ~8
+SatProofManager::addResolutionStep: [7] ~7 ~8
+SatProofManager::addResolutionStep: (or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309)))
+Solver::reason(8)
+  Solver::reason: 68,  8 ~9
+SatProofManager::addResolutionStep: [~8] 8 ~9
+SatProofManager::addResolutionStep: (or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294))
+Solver::reason(9)
+  Solver::reason: 45,  9 ~10
+minisat::cancelUntil(0)
+unchecked enqueue of ~9 (-1) trail size is 6 cap is 14, reason is 4294967295, CRef_Undef
+getNode(~9)
+getNode(~9) => (not BOOLEAN_TERM_VARIABLE_294)
+SatProofManager::endResChain: chain_res for ~9, (not BOOLEAN_TERM_VARIABLE_294)
+SatProofManager::endResChain:   7, ~8, ~9, ~11 : (or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+SatProofManager::endResChain:   [~11] 11 : [(not BOOLEAN_TERM_VARIABLE_309)] BOOLEAN_TERM_VARIABLE_309
+SatProofManager::endResChain:   [7] ~7, ~8 : [(f BOOLEAN_TERM_VARIABLE_294)] (or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309)))
+SatProofManager::endResChain:   [~8] 8, ~9 : [(not (f BOOLEAN_TERM_VARIABLE_309))] (or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294))
+SatProofManager::endResChain: creating step for computed conclusion (or (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_294))
+unchecked enqueue of ~10 (-1) trail size is 7 cap is 14, reason is 45, ~10  9
+unchecked enqueue of ~2 (-1) trail size is 8 cap is 14, reason is 24, ~2  10
+unchecked enqueue of ~4 (-1) trail size is 9 cap is 14, reason is 29, ~4  10
+unchecked enqueue of  3 (-1) trail size is 10 cap is 14, reason is 4,  3  2
+SatProofManager::finalizeProof: conflicting clause: ~3 4
+SatProofManager::finalizeProof: conflicting clause node: (or z0 (not y0))
+    SatProofManager::tryJustifyingLit: Lit: 3 [y0]
+    Solver::reason(3)
+      Solver::reason: 4,      3      2
+    SatProofManager::tryJustifyingLit: with clause:     3     2
+        SatProofManager::tryJustifyingLit: Lit: ~2 [(not x0)]
+        Solver::reason(2)
+          Solver::reason: 24,         ~2          10
+        SatProofManager::tryJustifyingLit: with clause:         ~2         10
+            SatProofManager::tryJustifyingLit: Lit: ~10 [(not (or x0 z0))]
+            Solver::reason(10)
+              Solver::reason: 45,             ~10              9
+            SatProofManager::tryJustifyingLit: with clause:             ~10             9
+                SatProofManager::tryJustifyingLit: Lit: ~9 [(not BOOLEAN_TERM_VARIABLE_294)]
+                Solver::reason(9)
+                  Solver::reason: 4294967295,                 CRef_Undef
+                SatProofManager::tryJustifyingLit: no SAT reason
+                SatProofManager::tryJustifyingLit:   found previous proof
+                SatProofManager::tryJustifyingLit:   try justifying proof children
+            SatProofManager::tryJustifyingLit: chain_res for ~10, (not (or x0 z0)) with clauses:
+            SatProofManager::tryJustifyingLit:   (or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0)))
+            SatProofManager::tryJustifyingLit:   (not BOOLEAN_TERM_VARIABLE_294)             [BOOLEAN_TERM_VARIABLE_294]
+        SatProofManager::tryJustifyingLit: chain_res for ~2, (not x0) with clauses:
+        SatProofManager::tryJustifyingLit:   (or (or x0 z0) (not x0))
+        SatProofManager::tryJustifyingLit:   (not (or x0 z0))         [(or x0 z0)]
+    SatProofManager::tryJustifyingLit: chain_res for 3, y0 with clauses:
+    SatProofManager::tryJustifyingLit:   (or x0 y0)
+    SatProofManager::tryJustifyingLit:   (not x0)     [x0]
   ===========
-    SatProofManager::tryJustifyingLit: Lit: 8 [(f BOOLEAN_TERM_VARIABLE_309)]
-    Solver::reason(8)
-      Solver::reason: 4294967295,     CRef_Undef
-    SatProofManager::tryJustifyingLit: no SAT reason
-    SatProofManager::tryJustifyingLit:   found previous proof
-    SatProofManager::tryJustifyingLit:   try justifying proof children
-  ===========
-    SatProofManager::tryJustifyingLit: Lit: 9 [BOOLEAN_TERM_VARIABLE_294]
-    Solver::reason(9)
-      Solver::reason: 4294967295,     CRef_Undef
-    SatProofManager::tryJustifyingLit: no SAT reason
-    SatProofManager::tryJustifyingLit:   found previous proof
-    SatProofManager::tryJustifyingLit:   try justifying proof children
-      SatProofManager::tryJustifyingLit: Lit: 10 [(or x0 z0)]
-      Solver::reason(10)
-        Solver::reason: 4294967295,       CRef_Undef
-      SatProofManager::tryJustifyingLit: no SAT reason
-  ===========
-    SatProofManager::tryJustifyingLit: Lit: 11 [BOOLEAN_TERM_VARIABLE_309]
-    Solver::reason(11)
-      Solver::reason: 4294967295,     CRef_Undef
-    SatProofManager::tryJustifyingLit: no SAT reason
-    SatProofManager::tryJustifyingLit:   found previous proof
-    SatProofManager::tryJustifyingLit:   try justifying proof children
-      SatProofManager::tryJustifyingLit: Lit: 12 [(and x1 y1)]
-      Solver::reason(12)
-        Solver::reason: 4294967295,       CRef_Undef
-      SatProofManager::tryJustifyingLit: no SAT reason
-      SatProofManager::tryJustifyingLit:   found previous proof
-      SatProofManager::tryJustifyingLit:   try justifying proof children
-        SatProofManager::tryJustifyingLit: Lit: 6 [y1]
-        Solver::reason(6)
-          Solver::reason: 4294967295,         CRef_Undef
-        SatProofManager::tryJustifyingLit: no SAT reason
-  ===========
-SatProofManager::finalizeProof: chain_res for false with clauses:
-SatProofManager::finalizeProof:   (or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
-SatProofManager::finalizeProof:   (not (f BOOLEAN_TERM_VARIABLE_294)) [(f BOOLEAN_TERM_VARIABLE_294)]
-SatProofManager::finalizeProof:   (f BOOLEAN_TERM_VARIABLE_309) [(not (f BOOLEAN_TERM_VARIABLE_309))]
-SatProofManager::finalizeProof:   BOOLEAN_TERM_VARIABLE_294 [(not BOOLEAN_TERM_VARIABLE_294)]
-SatProofManager::finalizeProof:   BOOLEAN_TERM_VARIABLE_309 [(not BOOLEAN_TERM_VARIABLE_309)]
-PropPfManager::getProof: Getting resolution proof of false
-PropPfManager::getProof: initial free assumptions are:
-- y1
-- (or x0 z0)
-- (or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309)))
-- (or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
-- (or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0)))
-- (or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1)))
-- (or (and x1 y1) (not y1))
-- (or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
-- (or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
-PropPfManager::getProof: proof is (CHAIN_RESOLUTION (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (CHAIN_RESOLUTION (ASSUME |:args| ((or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309))))) (FACTORING (CHAIN_RESOLUTION (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (CHAIN_RESOLUTION (ASSUME |:args| ((or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0))))) (ASSUME |:args| ((or x0 z0))) |:args| ((not (or x0 z0)))) (CHAIN_RESOLUTION (ASSUME |:args| ((or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1))))) (CHAIN_RESOLUTION (ASSUME |:args| ((or (and x1 y1) (not y1)))) (ASSUME |:args| (y1)) |:args| ((not y1))) |:args| ((not (and x1 y1)))) (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))) |:args| ((not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294))))) |:args| ((not (f BOOLEAN_TERM_VARIABLE_309)))) (FACTORING (CHAIN_RESOLUTION (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (CHAIN_RESOLUTION (ASSUME |:args| ((or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0))))) (ASSUME |:args| ((or x0 z0))) |:args| ((not (or x0 z0)))) (CHAIN_RESOLUTION (ASSUME |:args| ((or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1))))) (CHAIN_RESOLUTION (ASSUME |:args| ((or (and x1 y1) (not y1)))) (ASSUME |:args| (y1)) |:args| ((not y1))) |:args| ((not (and x1 y1)))) (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))) |:args| ((not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294))))) (CHAIN_RESOLUTION (ASSUME |:args| ((or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0))))) (ASSUME |:args| ((or x0 z0))) |:args| ((not (or x0 z0)))) (CHAIN_RESOLUTION (ASSUME |:args| ((or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1))))) (CHAIN_RESOLUTION (ASSUME |:args| ((or (and x1 y1) (not y1)))) (ASSUME |:args| (y1)) |:args| ((not y1))) |:args| ((not (and x1 y1)))) |:args| ((f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))
-PropPfManager::getProof: Connecting with CNF proof
-PropPfManager::getProof: new free assumptions are:
-- y1
-- (or x0 z0)
-- (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))
-- (= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))
-- (not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))
-- (or (and x1 y1) (not y1))
-PropPfManager::getProof: assertions are:
-- (or x0 y0)
-- (or (not y0) z0)
-- x1
-- y1
-- (not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))
-- true
-- (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))
-- (= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))
-PropPfManager::getProof: proof is (CHAIN_RESOLUTION (REORDERING (RESOLUTION (CNF_AND_NEG |:args| ((and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (IMPLIES_ELIM (SCOPE (TRUE_ELIM (TRANS (CONG (TRANS (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_294))) (SYMM (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309))))) |:args| (24 f)) (TRUE_INTRO (ASSUME |:args| ((f BOOLEAN_TERM_VARIABLE_309)))))) |:args| ((f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (CHAIN_RESOLUTION (NOT_EQUIV_ELIM2 (ASSUME |:args| ((not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))))) (FACTORING (CHAIN_RESOLUTION (REORDERING (EQ_RESOLVE (RESOLUTION (CNF_AND_NEG |:args| ((and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (IMPLIES_ELIM (SCOPE (FALSE_ELIM (TRANS (CONG (TRANS (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_294))) (SYMM (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309))))) |:args| (24 f)) (FALSE_INTRO (ASSUME |:args| ((not (f BOOLEAN_TERM_VARIABLE_309))))))) |:args| ((not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (CONG (MACRO_SR_PRED_INTRO |:args| ((= (not (not (f BOOLEAN_TERM_VARIABLE_309))) (f BOOLEAN_TERM_VARIABLE_309)))) (REFL |:args| ((not BOOLEAN_TERM_VARIABLE_309))) (REFL |:args| ((not BOOLEAN_TERM_VARIABLE_294))) (REFL |:args| ((not (f BOOLEAN_TERM_VARIABLE_294)))) |:args| (21))) |:args| ((or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))))) (ASSUME |:args| ((or x0 z0))) |:args| ((not (or x0 z0)))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))))) (CHAIN_RESOLUTION (ASSUME |:args| ((or (and x1 y1) (not y1)))) (ASSUME |:args| (y1)) |:args| ((not y1))) |:args| ((not (and x1 y1)))) (NOT_EQUIV_ELIM1 (ASSUME |:args| ((not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))))) |:args| ((not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294))))) |:args| ((not (f BOOLEAN_TERM_VARIABLE_309)))) (FACTORING (CHAIN_RESOLUTION (REORDERING (EQ_RESOLVE (RESOLUTION (CNF_AND_NEG |:args| ((and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (IMPLIES_ELIM (SCOPE (FALSE_ELIM (TRANS (CONG (TRANS (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_294))) (SYMM (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309))))) |:args| (24 f)) (FALSE_INTRO (ASSUME |:args| ((not (f BOOLEAN_TERM_VARIABLE_309))))))) |:args| ((not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (CONG (MACRO_SR_PRED_INTRO |:args| ((= (not (not (f BOOLEAN_TERM_VARIABLE_309))) (f BOOLEAN_TERM_VARIABLE_309)))) (REFL |:args| ((not BOOLEAN_TERM_VARIABLE_309))) (REFL |:args| ((not BOOLEAN_TERM_VARIABLE_294))) (REFL |:args| ((not (f BOOLEAN_TERM_VARIABLE_294)))) |:args| (21))) |:args| ((or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))))) (ASSUME |:args| ((or x0 z0))) |:args| ((not (or x0 z0)))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))))) (CHAIN_RESOLUTION (ASSUME |:args| ((or (and x1 y1) (not y1)))) (ASSUME |:args| (y1)) |:args| ((not y1))) |:args| ((not (and x1 y1)))) (NOT_EQUIV_ELIM1 (ASSUME |:args| ((not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))))) |:args| ((not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294))))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))))) (ASSUME |:args| ((or x0 z0))) |:args| ((not (or x0 z0)))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))))) (CHAIN_RESOLUTION (ASSUME |:args| ((or (and x1 y1) (not y1)))) (ASSUME |:args| (y1)) |:args| ((not y1))) |:args| ((not (and x1 y1)))) |:args| ((f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))
-PropPfManager::getProof: checking if can make scope...
-Fatal failure within std::shared_ptr<CVC4::ProofNode> CVC4::ProofNodeManager::mkScope(std::shared_ptr<CVC4::ProofNode>, std::vector<CVC4::NodeTemplate<true> >&, bool, bool, CVC4::Node) at /home/hbarbosa/cvc/wt-proofnew/src/expr/proof_node_manager.cpp:117
-Unreachable code reachedGenerated a proof that is not closed by the scope: (CHAIN_RESOLUTION (REORDERING (RESOLUTION (CNF_AND_NEG |:args| ((and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (IMPLIES_ELIM (SCOPE (TRUE_ELIM (TRANS (CONG (TRANS (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_294))) (SYMM (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309))))) |:args| (24 f)) (TRUE_INTRO (ASSUME |:args| ((f BOOLEAN_TERM_VARIABLE_309)))))) |:args| ((f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (CHAIN_RESOLUTION (NOT_EQUIV_ELIM2 (ASSUME |:args| ((not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))))) (FACTORING (CHAIN_RESOLUTION (REORDERING (EQ_RESOLVE (RESOLUTION (CNF_AND_NEG |:args| ((and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (IMPLIES_ELIM (SCOPE (FALSE_ELIM (TRANS (CONG (TRANS (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_294))) (SYMM (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309))))) |:args| (24 f)) (FALSE_INTRO (ASSUME |:args| ((not (f BOOLEAN_TERM_VARIABLE_309))))))) |:args| ((not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (CONG (MACRO_SR_PRED_INTRO |:args| ((= (not (not (f BOOLEAN_TERM_VARIABLE_309))) (f BOOLEAN_TERM_VARIABLE_309)))) (REFL |:args| ((not BOOLEAN_TERM_VARIABLE_309))) (REFL |:args| ((not BOOLEAN_TERM_VARIABLE_294))) (REFL |:args| ((not (f BOOLEAN_TERM_VARIABLE_294)))) |:args| (21))) |:args| ((or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))))) (ASSUME |:args| ((or x0 z0))) |:args| ((not (or x0 z0)))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))))) (CHAIN_RESOLUTION (ASSUME |:args| ((or (and x1 y1) (not y1)))) (ASSUME |:args| (y1)) |:args| ((not y1))) |:args| ((not (and x1 y1)))) (NOT_EQUIV_ELIM1 (ASSUME |:args| ((not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))))) |:args| ((not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294))))) |:args| ((not (f BOOLEAN_TERM_VARIABLE_309)))) (FACTORING (CHAIN_RESOLUTION (REORDERING (EQ_RESOLVE (RESOLUTION (CNF_AND_NEG |:args| ((and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (IMPLIES_ELIM (SCOPE (FALSE_ELIM (TRANS (CONG (TRANS (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_294))) (SYMM (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309))))) |:args| (24 f)) (FALSE_INTRO (ASSUME |:args| ((not (f BOOLEAN_TERM_VARIABLE_309))))))) |:args| ((not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (CONG (MACRO_SR_PRED_INTRO |:args| ((= (not (not (f BOOLEAN_TERM_VARIABLE_309))) (f BOOLEAN_TERM_VARIABLE_309)))) (REFL |:args| ((not BOOLEAN_TERM_VARIABLE_309))) (REFL |:args| ((not BOOLEAN_TERM_VARIABLE_294))) (REFL |:args| ((not (f BOOLEAN_TERM_VARIABLE_294)))) |:args| (21))) |:args| ((or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))))) (ASSUME |:args| ((or x0 z0))) |:args| ((not (or x0 z0)))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))))) (CHAIN_RESOLUTION (ASSUME |:args| ((or (and x1 y1) (not y1)))) (ASSUME |:args| (y1)) |:args| ((not y1))) |:args| ((not (and x1 y1)))) (NOT_EQUIV_ELIM1 (ASSUME |:args| ((not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))))) |:args| ((not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294))))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))))) (ASSUME |:args| ((or x0 z0))) |:args| ((not (or x0 z0)))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))))) (CHAIN_RESOLUTION (ASSUME |:args| ((or (and x1 y1) (not y1)))) (ASSUME |:args| (y1)) |:args| ((not y1))) |:args| ((not (and x1 y1)))) |:args| ((f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))
-Free assumption: (or x0 z0)
+    SatProofManager::tryJustifyingLit: Lit: ~4 [(not z0)]
+    Solver::reason(4)
+      Solver::reason: 29,     ~4      10
+    SatProofManager::tryJustifyingLit: with clause:     ~4     10
+        SatProofManager::tryJustifyingLit: Lit: ~10 [(not (or x0 z0))]
+        SatProofManager::tryJustifyingLit:   already justified in final proof
+      SatProofManager::tryJustifyingLit: chain_res for ~4, (not z0) with clauses:
+      SatProofManager::tryJustifyingLit:   (or (or x0 z0) (not z0))
+      SatProofManager::tryJustifyingLit:   (not (or x0 z0))       [(or x0 z0)]
+    ===========
+  SatProofManager::finalizeProof: chain_res for false with clauses:
+  SatProofManager::finalizeProof:   (or z0 (not y0))
+  SatProofManager::finalizeProof:   y0   [(not y0)]
+  SatProofManager::finalizeProof:   (not z0)   [z0]
+  PropPfManager::getProof: Getting resolution proof of false
+  PropPfManager::getProof: initial free assumptions are:
+  - (or x0 y0)
+  - BOOLEAN_TERM_VARIABLE_309
+  - (or z0 (not y0))
+  - (or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309)))
+  - (or (or x0 z0) (not x0))
+  - (or (or x0 z0) (not z0))
+  - (or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0)))
+  - (or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294))
+  - (or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+  PropPfManager::getProof: proof is (CHAIN_RESOLUTION (ASSUME |:args| ((or z0 (not y0)))) (CHAIN_RESOLUTION (ASSUME |:args| ((or x0 y0))) (CHAIN_RESOLUTION (ASSUME |:args| ((or (or x0 z0) (not x0)))) (CHAIN_RESOLUTION (ASSUME |:args| ((or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0))))) (FACTORING (CHAIN_RESOLUTION (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309)) (ASSUME |:args| ((or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309))))) (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294)))) |:args| ((not BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309))))) |:args| (BOOLEAN_TERM_VARIABLE_294)) |:args| ((or x0 z0))) |:args| (x0)) (CHAIN_RESOLUTION (ASSUME |:args| ((or (or x0 z0) (not z0)))) (CHAIN_RESOLUTION (ASSUME |:args| ((or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0))))) (FACTORING (CHAIN_RESOLUTION (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309)) (ASSUME |:args| ((or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309))))) (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294)))) |:args| ((not BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309))))) |:args| (BOOLEAN_TERM_VARIABLE_294)) |:args| ((or x0 z0))) |:args| ((not y0) z0))
+  PropPfManager::getProof: Connecting with CNF proof
+  PropPfManager::getProof: new free assumptions are:
+  - (or x0 y0)
+  - (or (not y0) z0)
+  - (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))
+  - BOOLEAN_TERM_VARIABLE_309
+  - (not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))
+  - (or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294))
+  PropPfManager::getProof: assertions are:
+  - (or x0 y0)
+  - (or (not y0) z0)
+  - x1
+  - y1
+  - (not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))
+  - true
+  - (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))
+  - (= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))
+  PropPfManager::getProof: proof is (CHAIN_RESOLUTION (REORDERING (ASSUME |:args| ((or (not y0) z0))) |:args| ((or z0 (not y0)))) (CHAIN_RESOLUTION (ASSUME |:args| ((or x0 y0))) (CHAIN_RESOLUTION (CNF_OR_NEG |:args| ((or x0 z0) 0)) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))))) (FACTORING (CHAIN_RESOLUTION (REORDERING (RESOLUTION (CNF_AND_NEG |:args| ((and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (IMPLIES_ELIM (SCOPE (TRUE_ELIM (TRANS (CONG (TRANS (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_294))) (SYMM (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309))))) |:args| (24 f)) (TRUE_INTRO (ASSUME |:args| ((f BOOLEAN_TERM_VARIABLE_309)))))) |:args| ((f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309)) (NOT_EQUIV_ELIM2 (ASSUME |:args| ((not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))))) (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294)))) |:args| ((not BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309))))) |:args| (BOOLEAN_TERM_VARIABLE_294)) |:args| ((or x0 z0))) |:args| (x0)) (CHAIN_RESOLUTION (CNF_OR_NEG |:args| ((or x0 z0) 1)) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))))) (FACTORING (CHAIN_RESOLUTION (REORDERING (RESOLUTION (CNF_AND_NEG |:args| ((and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (IMPLIES_ELIM (SCOPE (TRUE_ELIM (TRANS (CONG (TRANS (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_294))) (SYMM (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309))))) |:args| (24 f)) (TRUE_INTRO (ASSUME |:args| ((f BOOLEAN_TERM_VARIABLE_309)))))) |:args| ((f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309)) (NOT_EQUIV_ELIM2 (ASSUME |:args| ((not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))))) (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294)))) |:args| ((not BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309))))) |:args| (BOOLEAN_TERM_VARIABLE_294)) |:args| ((or x0 z0))) |:args| ((not y0) z0))
+  PropPfManager::getProof: checking if can make scope...
+Fatal failure within std::shared_ptr<CVC4::ProofNode> CVC4::ProofNodeManager::mkScope(std::shared_ptr<CVC4::ProofNode>, std::vector<CVC4::NodeTemplate<true> >&, bool, bool, CVC4::Node) at /home/hbarbosa/cvc/wt-tbpf/src/expr/proof_node_manager.cpp:117
+Unreachable code reachedGenerated a proof that is not closed by the scope: (CHAIN_RESOLUTION (REORDERING (ASSUME |:args| ((or (not y0) z0))) |:args| ((or z0 (not y0)))) (CHAIN_RESOLUTION (ASSUME |:args| ((or x0 y0))) (CHAIN_RESOLUTION (CNF_OR_NEG |:args| ((or x0 z0) 0)) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))))) (FACTORING (CHAIN_RESOLUTION (REORDERING (RESOLUTION (CNF_AND_NEG |:args| ((and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (IMPLIES_ELIM (SCOPE (TRUE_ELIM (TRANS (CONG (TRANS (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_294))) (SYMM (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309))))) |:args| (24 f)) (TRUE_INTRO (ASSUME |:args| ((f BOOLEAN_TERM_VARIABLE_309)))))) |:args| ((f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309)) (NOT_EQUIV_ELIM2 (ASSUME |:args| ((not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))))) (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294)))) |:args| ((not BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309))))) |:args| (BOOLEAN_TERM_VARIABLE_294)) |:args| ((or x0 z0))) |:args| (x0)) (CHAIN_RESOLUTION (CNF_OR_NEG |:args| ((or x0 z0) 1)) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))))) (FACTORING (CHAIN_RESOLUTION (REORDERING (RESOLUTION (CNF_AND_NEG |:args| ((and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (IMPLIES_ELIM (SCOPE (TRUE_ELIM (TRANS (CONG (TRANS (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_294))) (SYMM (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309))))) |:args| (24 f)) (TRUE_INTRO (ASSUME |:args| ((f BOOLEAN_TERM_VARIABLE_309)))))) |:args| ((f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309)) (NOT_EQUIV_ELIM2 (ASSUME |:args| ((not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))))) (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294)))) |:args| ((not BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309))))) |:args| (BOOLEAN_TERM_VARIABLE_294)) |:args| ((or x0 z0))) |:args| ((not y0) z0))
+Free assumption: BOOLEAN_TERM_VARIABLE_309
 - assumption: (= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))
 - assumption: (not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))
 - assumption: y1
