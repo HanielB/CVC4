@@ -1,0 +1,1085 @@
+./debug/bin/cvc4 ~/cvc/wt-proofnew/test/regress/regress0/bt-test-01.smt2 -t sat-proof -t cnf -d cnf  --proof-new-eager-checking --dag-thresh=0 -d pf::sat -t lazy-cdproof -t cdproof
+convertAndAssert(true, removable = false, negated = false)
+convertAndAssert(true, negated = false)
+toCNF(true, negated = false)
+convertAtom(true)
+::newLiteral(true, 1)
+  ::newLiteral: node already registered
+  ::newLiteral: boolean const
+  newLiteral(true) => 0
+Inserting into stream clause: 0; node = true
+convertAndAssert((not false), removable = false, negated = false)
+convertAndAssert((not false), negated = false)
+convertAndAssert(false, negated = true)
+toCNF(false, negated = true)
+convertAtom(false)
+::newLiteral(false, 1)
+  ::newLiteral: node already registered
+  ::newLiteral: boolean const
+  newLiteral(false) => 1
+Inserting into stream clause: ~1; node = (not false)
+CDProof::addStep: RemoveTermFormulas::TConvProofGenerator::LazyCDProof : MACRO_SR_PRED_INTRO (= (or x0 z0) BOOLEAN_TERM_VARIABLE_294), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (or x0 z0) BOOLEAN_TERM_VARIABLE_294)
+...no symm, return null
+  new node (= (or x0 z0) BOOLEAN_TERM_VARIABLE_294)...
+  check connect symmetry (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))
+  no connect
+...return 1
+CDProof::addStep: RemoveTermFormulas::LazyCDProof : MACRO_SR_PRED_INTRO (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))
+...no symm, return null
+  new node (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))...
+  check connect symmetry (= (or x0 z0) BOOLEAN_TERM_VARIABLE_294)
+  no connect
+...return 1
+LazyCDProof::mkLazyProof (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))
+CDProof::getProofSymm: (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))
+...existing non-assume MACRO_SR_PRED_INTRO
+...no generators, finished
+CDProof::addStep: RemoveTermFormulas::TConvProofGenerator::LazyCDProof : MACRO_SR_PRED_INTRO (= (and x1 y1) BOOLEAN_TERM_VARIABLE_309), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (and x1 y1) BOOLEAN_TERM_VARIABLE_309)
+...no symm, return null
+  new node (= (and x1 y1) BOOLEAN_TERM_VARIABLE_309)...
+  check connect symmetry (= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))
+  no connect
+...return 1
+CDProof::addStep: RemoveTermFormulas::LazyCDProof : MACRO_SR_PRED_INTRO (= BOOLEAN_TERM_VARIABLE_309 (and x1 y1)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))
+...no symm, return null
+  new node (= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))...
+  check connect symmetry (= (and x1 y1) BOOLEAN_TERM_VARIABLE_309)
+  no connect
+...return 1
+LazyCDProof::mkLazyProof (= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))
+CDProof::getProofSymm: (= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))
+...existing non-assume MACRO_SR_PRED_INTRO
+...no generators, finished
+ProofCnfStream::convertAndAssert((or x0 y0), removable = false, negated = false)
+ProofCnfStream::convertAndAssert((or x0 y0), negated = false)
+toCNF(x0, negated = false)
+convertAtom(x0)
+::newLiteral(x0, 0)
+  ::newLiteral: node already registered
+  ::newLiteral: new var
+  newLiteral(x0) => 2
+toCNF(y0, negated = false)
+convertAtom(y0)
+::newLiteral(y0, 0)
+  ::newLiteral: node already registered
+  ::newLiteral: new var
+  newLiteral(y0) => 3
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= x0 x0), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= x0 x0)
+...no possible symm
+  new node (= x0 x0)...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= y0 y0), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= y0 y0)
+...no possible symm
+  new node (= y0 y0)...
+...return 1
+Inserting into stream clause: 2 3; node = (or x0 y0)
+ProofCnfStream::convertAndAssert((or (not y0) z0), removable = false, negated = false)
+ProofCnfStream::convertAndAssert((or (not y0) z0), negated = false)
+toCNF((not y0), negated = false)
+toCNF(): already translated
+CnfStream::getLiteral((not y0)) => ~3
+toCNF(z0, negated = false)
+convertAtom(z0)
+::newLiteral(z0, 0)
+  ::newLiteral: node already registered
+  ::newLiteral: new var
+  newLiteral(z0) => 4
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (not y0) (not y0)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (not y0) (not y0))
+...no possible symm
+  new node (= (not y0) (not y0))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= z0 z0), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= z0 z0)
+...no possible symm
+  new node (= z0 z0)...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REORDERING (or z0 (not y0)), ensureChildren = 0, overwrite policy = NEVER
+CDProof::getProofSymm: (or z0 (not y0))
+...no possible symm
+- get child (or (not y0) z0)
+CDProof::getProofSymm: (or (not y0) z0)
+...no possible symm
+--- add assume
+  new node (or z0 (not y0))...
+...return 1
+Inserting into stream clause: ~3 4; node = (or (not y0) z0)
+ProofCnfStream::convertAndAssert(x1, removable = false, negated = false)
+ProofCnfStream::convertAndAssert(x1, negated = false)
+toCNF(x1, negated = false)
+convertAtom(x1)
+::newLiteral(x1, 0)
+  ::newLiteral: node already registered
+  ::newLiteral: new var
+  newLiteral(x1) => 5
+Inserting into stream clause: 5; node = x1
+ProofCnfStream::convertAndAssert(y1, removable = false, negated = false)
+ProofCnfStream::convertAndAssert(y1, negated = false)
+toCNF(y1, negated = false)
+convertAtom(y1)
+::newLiteral(y1, 0)
+  ::newLiteral: node already registered
+  ::newLiteral: new var
+  newLiteral(y1) => 6
+Inserting into stream clause: 6; node = y1
+ProofCnfStream::convertAndAssert((not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))), removable = false, negated = false)
+ProofCnfStream::convertAndAssert((not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))), negated = false)
+ProofCnfStream::convertAndAssert((= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)), negated = true)
+toCNF((f BOOLEAN_TERM_VARIABLE_294), negated = false)
+convertAtom((f BOOLEAN_TERM_VARIABLE_294))
+::newLiteral((f BOOLEAN_TERM_VARIABLE_294), 1)
+  ::newLiteral: node already registered
+  ::newLiteral: new var
+  newLiteral((f BOOLEAN_TERM_VARIABLE_294)) => 7
+toCNF((f BOOLEAN_TERM_VARIABLE_309), negated = false)
+convertAtom((f BOOLEAN_TERM_VARIABLE_309))
+::newLiteral((f BOOLEAN_TERM_VARIABLE_309), 1)
+  ::newLiteral: node already registered
+  ::newLiteral: new var
+  newLiteral((f BOOLEAN_TERM_VARIABLE_309)) => 8
+Inserting into stream clause: ~7 ~8; node = (not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))
+CDProof::addStep: ProofCnfStream::LazyCDProof : NOT_EQUIV_ELIM2 (or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309))), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309)))
+...no possible symm
+- get child (not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))
+CDProof::getProofSymm: (not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))
+...no symm, return null
+--- add assume
+  new node (or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309)))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_294))), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_294)))
+...no possible symm
+  new node (= (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_294)))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (not (f BOOLEAN_TERM_VARIABLE_309)) (not (f BOOLEAN_TERM_VARIABLE_309))), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (not (f BOOLEAN_TERM_VARIABLE_309)) (not (f BOOLEAN_TERM_VARIABLE_309)))
+...no possible symm
+  new node (= (not (f BOOLEAN_TERM_VARIABLE_309)) (not (f BOOLEAN_TERM_VARIABLE_309)))...
+...return 1
+Inserting into stream clause: 7 8; node = (not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))
+CDProof::addStep: ProofCnfStream::LazyCDProof : NOT_EQUIV_ELIM1 (or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
+...no possible symm
+- get child (not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))
+CDProof::getProofSymm: (not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))
+...no symm, return non-null
+  new node (or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_294)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_294))
+...no possible symm
+  new node (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_294))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (f BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_309)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (f BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_309))
+...no possible symm
+  new node (= (f BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_309))...
+...return 1
+ProofCnfStream::convertAndAssert(true, removable = false, negated = false)
+ProofCnfStream::convertAndAssert(true, negated = false)
+toCNF(true, negated = false)
+toCNF(): already translated
+CnfStream::getLiteral(true) => 0
+Inserting into stream clause: 0; node = true
+ProofCnfStream::convertAndAssert((= BOOLEAN_TERM_VARIABLE_294 (or x0 z0)), removable = false, negated = false)
+ProofCnfStream::convertAndAssert((= BOOLEAN_TERM_VARIABLE_294 (or x0 z0)), negated = false)
+toCNF(BOOLEAN_TERM_VARIABLE_294, negated = false)
+convertAtom(BOOLEAN_TERM_VARIABLE_294)
+::newLiteral(BOOLEAN_TERM_VARIABLE_294, 1)
+  ::newLiteral: node already registered
+  ::newLiteral: new var
+  newLiteral(BOOLEAN_TERM_VARIABLE_294) => 9
+toCNF((or x0 z0), negated = false)
+toCNF(x0, negated = false)
+toCNF(): already translated
+CnfStream::getLiteral(x0) => 2
+toCNF(z0, negated = false)
+toCNF(): already translated
+CnfStream::getLiteral(z0) => 4
+::newLiteral((or x0 z0), 0)
+  ::newLiteral: node already registered
+  ::newLiteral: new var
+  newLiteral((or x0 z0)) => 10
+Inserting into stream clause: 10 ~2; node = (or x0 z0)
+CDProof::addStep: ProofCnfStream::LazyCDProof : CNF_OR_NEG (or (or x0 z0) (not x0)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (or (or x0 z0) (not x0))
+...no possible symm
+  new node (or (or x0 z0) (not x0))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (or x0 z0) (or x0 z0)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (or x0 z0) (or x0 z0))
+...no possible symm
+  new node (= (or x0 z0) (or x0 z0))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (not x0) (not x0)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (not x0) (not x0))
+...no possible symm
+  new node (= (not x0) (not x0))...
+...return 1
+Inserting into stream clause: 10 ~4; node = (or x0 z0)
+CDProof::addStep: ProofCnfStream::LazyCDProof : CNF_OR_NEG (or (or x0 z0) (not z0)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (or (or x0 z0) (not z0))
+...no possible symm
+  new node (or (or x0 z0) (not z0))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (or x0 z0) (or x0 z0)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (or x0 z0) (or x0 z0))
+...existing non-assume REFL
+...success, no overwrite
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (not z0) (not z0)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (not z0) (not z0))
+...no possible symm
+  new node (= (not z0) (not z0))...
+...return 1
+Inserting into stream clause: 2 4 ~10; node = (not (or x0 z0))
+CDProof::addStep: ProofCnfStream::LazyCDProof : CNF_OR_POS (or (not (or x0 z0)) x0 z0), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (or (not (or x0 z0)) x0 z0)
+...no possible symm
+  new node (or (not (or x0 z0)) x0 z0)...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (not (or x0 z0)) (not (or x0 z0))), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (not (or x0 z0)) (not (or x0 z0)))
+...no possible symm
+  new node (= (not (or x0 z0)) (not (or x0 z0)))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= x0 x0), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= x0 x0)
+...existing non-assume REFL
+...success, no overwrite
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= z0 z0), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= z0 z0)
+...existing non-assume REFL
+...success, no overwrite
+CDProof::addStep: ProofCnfStream::LazyCDProof : REORDERING (or x0 z0 (not (or x0 z0))), ensureChildren = 0, overwrite policy = NEVER
+CDProof::getProofSymm: (or x0 z0 (not (or x0 z0)))
+...no possible symm
+- get child (or (not (or x0 z0)) x0 z0)
+CDProof::getProofSymm: (or (not (or x0 z0)) x0 z0)
+...existing non-assume CNF_OR_POS
+  new node (or x0 z0 (not (or x0 z0)))...
+...return 1
+Inserting into stream clause: ~9 10; node = (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))
+CDProof::addStep: ProofCnfStream::LazyCDProof : EQUIV_ELIM1 (or (not BOOLEAN_TERM_VARIABLE_294) (or x0 z0)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (or (not BOOLEAN_TERM_VARIABLE_294) (or x0 z0))
+...no possible symm
+- get child (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))
+CDProof::getProofSymm: (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))
+...no symm, return null
+--- add assume
+  new node (or (not BOOLEAN_TERM_VARIABLE_294) (or x0 z0))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_294)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_294))
+...no possible symm
+  new node (= (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_294))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (or x0 z0) (or x0 z0)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (or x0 z0) (or x0 z0))
+...existing non-assume REFL
+...success, no overwrite
+CDProof::addStep: ProofCnfStream::LazyCDProof : REORDERING (or (or x0 z0) (not BOOLEAN_TERM_VARIABLE_294)), ensureChildren = 0, overwrite policy = NEVER
+CDProof::getProofSymm: (or (or x0 z0) (not BOOLEAN_TERM_VARIABLE_294))
+...no possible symm
+- get child (or (not BOOLEAN_TERM_VARIABLE_294) (or x0 z0))
+CDProof::getProofSymm: (or (not BOOLEAN_TERM_VARIABLE_294) (or x0 z0))
+...existing non-assume EQUIV_ELIM1
+  new node (or (or x0 z0) (not BOOLEAN_TERM_VARIABLE_294))...
+...return 1
+Inserting into stream clause: 9 ~10; node = (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))
+CDProof::addStep: ProofCnfStream::LazyCDProof : EQUIV_ELIM2 (or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0))), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0)))
+...no possible symm
+- get child (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))
+CDProof::getProofSymm: (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))
+...no symm, return non-null
+  new node (or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0)))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= BOOLEAN_TERM_VARIABLE_294 BOOLEAN_TERM_VARIABLE_294), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= BOOLEAN_TERM_VARIABLE_294 BOOLEAN_TERM_VARIABLE_294)
+...no possible symm
+  new node (= BOOLEAN_TERM_VARIABLE_294 BOOLEAN_TERM_VARIABLE_294)...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (not (or x0 z0)) (not (or x0 z0))), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (not (or x0 z0)) (not (or x0 z0)))
+...existing non-assume REFL
+...success, no overwrite
+ProofCnfStream::convertAndAssert((= BOOLEAN_TERM_VARIABLE_309 (and x1 y1)), removable = false, negated = false)
+ProofCnfStream::convertAndAssert((= BOOLEAN_TERM_VARIABLE_309 (and x1 y1)), negated = false)
+toCNF(BOOLEAN_TERM_VARIABLE_309, negated = false)
+convertAtom(BOOLEAN_TERM_VARIABLE_309)
+::newLiteral(BOOLEAN_TERM_VARIABLE_309, 1)
+  ::newLiteral: node already registered
+  ::newLiteral: new var
+  newLiteral(BOOLEAN_TERM_VARIABLE_309) => 11
+toCNF((and x1 y1), negated = false)
+toCNF(x1, negated = false)
+toCNF(): already translated
+CnfStream::getLiteral(x1) => 5
+toCNF(y1, negated = false)
+toCNF(): already translated
+CnfStream::getLiteral(y1) => 6
+::newLiteral((and x1 y1), 0)
+  ::newLiteral: node already registered
+  ::newLiteral: new var
+  newLiteral((and x1 y1)) => 12
+Inserting into stream clause: ~12 5; node = (not (and x1 y1))
+Inserting into stream clause: ~12 6; node = (not (and x1 y1))
+Inserting into stream clause: ~5 ~6 12; node = (and x1 y1)
+CDProof::addStep: ProofCnfStream::LazyCDProof : CNF_AND_NEG (or (and x1 y1) (not x1) (not y1)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (or (and x1 y1) (not x1) (not y1))
+...no possible symm
+  new node (or (and x1 y1) (not x1) (not y1))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (and x1 y1) (and x1 y1)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (and x1 y1) (and x1 y1))
+...no possible symm
+  new node (= (and x1 y1) (and x1 y1))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (not x1) (not x1)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (not x1) (not x1))
+...no possible symm
+  new node (= (not x1) (not x1))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (not y1) (not y1)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (not y1) (not y1))
+...no possible symm
+  new node (= (not y1) (not y1))...
+...return 1
+Inserting into stream clause: ~11 12; node = (= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))
+Inserting into stream clause: 11 ~12; node = (= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))
+getNode(11)
+getNode(11) => BOOLEAN_TERM_VARIABLE_309
+CDProof::addStep: ProofCnfStream::LazyCDProof : EQUIV_ELIM2 (or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1))), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1)))
+...no possible symm
+- get child (= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))
+CDProof::getProofSymm: (= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))
+...no symm, return null
+--- add assume
+  new node (or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1)))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_309), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_309)
+...no possible symm
+  new node (= BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_309)...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (not (and x1 y1)) (not (and x1 y1))), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (not (and x1 y1)) (not (and x1 y1)))
+...no possible symm
+  new node (= (not (and x1 y1)) (not (and x1 y1)))...
+...return 1
+Solver::removeClause: eagerly compute propagation of  12
+  SatProofManager::tryJustifyingLit: Lit: 12 [(and x1 y1)]
+  Solver::reason(12)
+    Solver::reason: 50,    12   ~6
+  SatProofManager::tryJustifyingLit: with clause:   12   ~6
+      SatProofManager::tryJustifyingLit: Lit: 6 [y1]
+      Solver::reason(6)
+        Solver::reason: 4294967295,       CRef_Undef
+      SatProofManager::tryJustifyingLit: no SAT reason
+  SatProofManager::tryJustifyingLit: chain_res for 12, (and x1 y1) with clauses:
+  SatProofManager::tryJustifyingLit:   (or (and x1 y1) (not y1))
+  SatProofManager::tryJustifyingLit:   y1   [(not y1)]
+  CDProof::addStep: SatProofManager::CDProof : CHAIN_RESOLUTION (and x1 y1), ensureChildren = 0, overwrite policy = ALWAYS
+  CDProof::getProofSymm: (and x1 y1)
+  ...no possible symm
+  - get child (or (and x1 y1) (not y1))
+  CDProof::getProofSymm: (or (and x1 y1) (not y1))
+  ...no possible symm
+  --- add assume
+  - get child y1
+  CDProof::getProofSymm: y1
+  ...no possible symm
+  --- add assume
+    new node (and x1 y1)...
+  ...return 1
+Solver::removeClause: eagerly compute propagation of  11
+  SatProofManager::tryJustifyingLit: Lit: 11 [BOOLEAN_TERM_VARIABLE_309]
+  Solver::reason(11)
+    Solver::reason: 56,    11   ~12
+  SatProofManager::tryJustifyingLit: with clause:   11   ~12
+      SatProofManager::tryJustifyingLit: Lit: 12 [(and x1 y1)]
+      Solver::reason(12)
+        Solver::reason: 4294967295,       CRef_Undef
+      SatProofManager::tryJustifyingLit: no SAT reason
+  SatProofManager::tryJustifyingLit: chain_res for 11, BOOLEAN_TERM_VARIABLE_309 with clauses:
+  SatProofManager::tryJustifyingLit:   (or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1)))
+  SatProofManager::tryJustifyingLit:   (and x1 y1)   [(not (and x1 y1))]
+  CDProof::addStep: SatProofManager::CDProof : CHAIN_RESOLUTION BOOLEAN_TERM_VARIABLE_309, ensureChildren = 0, overwrite policy = ALWAYS
+  CDProof::getProofSymm: BOOLEAN_TERM_VARIABLE_309
+  ...no possible symm
+  - get child (or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1)))
+  CDProof::getProofSymm: (or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1)))
+  ...no possible symm
+  --- add assume
+  - get child (and x1 y1)
+  CDProof::getProofSymm: (and x1 y1)
+  ...existing non-assume CHAIN_RESOLUTION
+    new node BOOLEAN_TERM_VARIABLE_309...
+  ...return 1
+getNode(9)
+getNode(9) => BOOLEAN_TERM_VARIABLE_294
+Solver::removeClause: eagerly compute propagation of  9
+  SatProofManager::tryJustifyingLit: Lit: 9 [BOOLEAN_TERM_VARIABLE_294]
+  Solver::reason(9)
+    Solver::reason: 45,    9   ~10
+  SatProofManager::tryJustifyingLit: with clause:   9   ~10
+      SatProofManager::tryJustifyingLit: Lit: 10 [(or x0 z0)]
+      Solver::reason(10)
+        Solver::reason: 4294967295,       CRef_Undef
+      SatProofManager::tryJustifyingLit: no SAT reason
+  SatProofManager::tryJustifyingLit: chain_res for 9, BOOLEAN_TERM_VARIABLE_294 with clauses:
+  SatProofManager::tryJustifyingLit:   (or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0)))
+  SatProofManager::tryJustifyingLit:   (or x0 z0)   [(not (or x0 z0))]
+  CDProof::addStep: SatProofManager::CDProof : CHAIN_RESOLUTION BOOLEAN_TERM_VARIABLE_294, ensureChildren = 0, overwrite policy = ALWAYS
+  CDProof::getProofSymm: BOOLEAN_TERM_VARIABLE_294
+  ...no possible symm
+  - get child (or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0)))
+  CDProof::getProofSymm: (or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0)))
+  ...no possible symm
+  --- add assume
+  - get child (or x0 z0)
+  CDProof::getProofSymm: (or x0 z0)
+  ...no possible symm
+  --- add assume
+    new node BOOLEAN_TERM_VARIABLE_294...
+  ...return 1
+getNode(~8)
+getNode(~8) => (not (f BOOLEAN_TERM_VARIABLE_309))
+getNode(7)
+getNode(7) => (f BOOLEAN_TERM_VARIABLE_294)
+CnfStream::getLiteral((not (f BOOLEAN_TERM_VARIABLE_294))) => ~7
+CnfStream::getLiteral((not (f BOOLEAN_TERM_VARIABLE_294))) => ~7
+getNode(~7)
+getNode(~7) => (not (f BOOLEAN_TERM_VARIABLE_294))
+CDProof::addStep: LazyCDProof : FALSE_INTRO (= (f BOOLEAN_TERM_VARIABLE_309) false), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (f BOOLEAN_TERM_VARIABLE_309) false)
+...no symm, return null
+- get child (not (f BOOLEAN_TERM_VARIABLE_309))
+CDProof::getProofSymm: (not (f BOOLEAN_TERM_VARIABLE_309))
+...no possible symm
+--- add assume
+  new node (= (f BOOLEAN_TERM_VARIABLE_309) false)...
+  check connect symmetry (= false (f BOOLEAN_TERM_VARIABLE_309))
+  no connect
+...return 1
+CDProof::addStep: LazyCDProof : TRUE_INTRO (= BOOLEAN_TERM_VARIABLE_309 true), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= BOOLEAN_TERM_VARIABLE_309 true)
+...no symm, return null
+- get child BOOLEAN_TERM_VARIABLE_309
+CDProof::getProofSymm: BOOLEAN_TERM_VARIABLE_309
+...no possible symm
+--- add assume
+  new node (= BOOLEAN_TERM_VARIABLE_309 true)...
+  check connect symmetry (= true BOOLEAN_TERM_VARIABLE_309)
+  no connect
+...return 1
+CDProof::addStep: LazyCDProof : TRUE_INTRO (= BOOLEAN_TERM_VARIABLE_294 true), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= BOOLEAN_TERM_VARIABLE_294 true)
+...no symm, return null
+- get child BOOLEAN_TERM_VARIABLE_294
+CDProof::getProofSymm: BOOLEAN_TERM_VARIABLE_294
+...no possible symm
+--- add assume
+  new node (= BOOLEAN_TERM_VARIABLE_294 true)...
+  check connect symmetry (= true BOOLEAN_TERM_VARIABLE_294)
+  no connect
+...return 1
+CDProof::addStep: LazyCDProof : TRANS (= BOOLEAN_TERM_VARIABLE_294 BOOLEAN_TERM_VARIABLE_309), ensureChildren = 1, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= BOOLEAN_TERM_VARIABLE_294 BOOLEAN_TERM_VARIABLE_309)
+...no symm, return null
+- get child (= BOOLEAN_TERM_VARIABLE_294 true)
+CDProof::getProofSymm: (= BOOLEAN_TERM_VARIABLE_294 true)
+...existing non-assume TRUE_INTRO
+- get child (= true BOOLEAN_TERM_VARIABLE_309)
+CDProof::getProofSymm: (= true BOOLEAN_TERM_VARIABLE_309)
+...fresh make symm
+  new node (= BOOLEAN_TERM_VARIABLE_294 BOOLEAN_TERM_VARIABLE_309)...
+  check connect symmetry (= BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294)
+  no connect
+...return 1
+CDProof::addStep: LazyCDProof : CONG (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)), ensureChildren = 1, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
+...no symm, return null
+- get child (= BOOLEAN_TERM_VARIABLE_294 BOOLEAN_TERM_VARIABLE_309)
+CDProof::getProofSymm: (= BOOLEAN_TERM_VARIABLE_294 BOOLEAN_TERM_VARIABLE_309)
+...existing non-assume TRANS
+  new node (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))...
+  check connect symmetry (= (f BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_294))
+  no connect
+...return 1
+CDProof::addStep: LazyCDProof : TRANS (= (f BOOLEAN_TERM_VARIABLE_294) false), ensureChildren = 1, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (f BOOLEAN_TERM_VARIABLE_294) false)
+...no symm, return null
+- get child (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
+CDProof::getProofSymm: (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
+...existing non-assume CONG
+- get child (= (f BOOLEAN_TERM_VARIABLE_309) false)
+CDProof::getProofSymm: (= (f BOOLEAN_TERM_VARIABLE_309) false)
+...existing non-assume FALSE_INTRO
+  new node (= (f BOOLEAN_TERM_VARIABLE_294) false)...
+  check connect symmetry (= false (f BOOLEAN_TERM_VARIABLE_294))
+  no connect
+...return 1
+CDProof::addStep: LazyCDProof : FALSE_ELIM (not (f BOOLEAN_TERM_VARIABLE_294)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (not (f BOOLEAN_TERM_VARIABLE_294))
+...no possible symm
+- get child (= (f BOOLEAN_TERM_VARIABLE_294) false)
+CDProof::getProofSymm: (= (f BOOLEAN_TERM_VARIABLE_294) false)
+...existing non-assume TRANS
+  new node (not (f BOOLEAN_TERM_VARIABLE_294))...
+...return 1
+LazyCDProof::mkLazyProof (not (f BOOLEAN_TERM_VARIABLE_294))
+CDProof::getProofSymm: (not (f BOOLEAN_TERM_VARIABLE_294))
+...existing non-assume FALSE_ELIM
+LazyCDProof: Call generator pfee::LazyCDProof::theory::uf::ee for assumption (not (f BOOLEAN_TERM_VARIABLE_309))
+LazyCDProof::mkLazyProof (not (f BOOLEAN_TERM_VARIABLE_309))
+CDProof::getProofSymm: (not (f BOOLEAN_TERM_VARIABLE_309))
+...no possible symm
+...no generators, finished
+LazyCDProof: Successfully added fact for (not (f BOOLEAN_TERM_VARIABLE_309))
+LazyCDProof: Call generator pfee::LazyCDProof::theory::uf::ee for assumption BOOLEAN_TERM_VARIABLE_309
+LazyCDProof::mkLazyProof BOOLEAN_TERM_VARIABLE_309
+CDProof::getProofSymm: BOOLEAN_TERM_VARIABLE_309
+...no possible symm
+...no generators, finished
+LazyCDProof: Successfully added fact for BOOLEAN_TERM_VARIABLE_309
+LazyCDProof: Call generator pfee::LazyCDProof::theory::uf::ee for assumption BOOLEAN_TERM_VARIABLE_294
+LazyCDProof::mkLazyProof BOOLEAN_TERM_VARIABLE_294
+CDProof::getProofSymm: BOOLEAN_TERM_VARIABLE_294
+...no possible symm
+...no generators, finished
+LazyCDProof: Successfully added fact for BOOLEAN_TERM_VARIABLE_294
+...finished
+ProofCnfStream::convertPropagation: proven explanation(=> (and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294)))
+LazyCDProof::addLazyStep: (=> (and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294))) set to generator pfee::theory::uf::ee
+ProofCnfStream::convertPropagation: adding IMPLIES_ELIM rule to conclude (or (not (and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_294)))
+CDProof::addStep: ProofCnfStream::LazyCDProof : IMPLIES_ELIM (or (not (and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_294))), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (or (not (and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_294)))
+...no possible symm
+- get child (=> (and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294)))
+CDProof::getProofSymm: (=> (and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294)))
+...no possible symm
+--- add assume
+  new node (or (not (and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_294)))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : CNF_AND_NEG (or (and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (not (not (f BOOLEAN_TERM_VARIABLE_309))) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (or (and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (not (not (f BOOLEAN_TERM_VARIABLE_309))) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294))
+...no possible symm
+  new node (or (and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (not (not (f BOOLEAN_TERM_VARIABLE_309))) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : RESOLUTION (or (not (not (f BOOLEAN_TERM_VARIABLE_309))) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294))), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (or (not (not (f BOOLEAN_TERM_VARIABLE_309))) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294)))
+...no possible symm
+- get child (or (and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (not (not (f BOOLEAN_TERM_VARIABLE_309))) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294))
+CDProof::getProofSymm: (or (and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (not (not (f BOOLEAN_TERM_VARIABLE_309))) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294))
+...existing non-assume CNF_AND_NEG
+- get child (or (not (and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_294)))
+CDProof::getProofSymm: (or (not (and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_294)))
+...existing non-assume IMPLIES_ELIM
+  new node (or (not (not (f BOOLEAN_TERM_VARIABLE_309))) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294)))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : MACRO_SR_PRED_INTRO (= (not (not (f BOOLEAN_TERM_VARIABLE_309))) (f BOOLEAN_TERM_VARIABLE_309)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (not (not (f BOOLEAN_TERM_VARIABLE_309))) (f BOOLEAN_TERM_VARIABLE_309))
+...no symm, return null
+  new node (= (not (not (f BOOLEAN_TERM_VARIABLE_309))) (f BOOLEAN_TERM_VARIABLE_309))...
+  check connect symmetry (= (f BOOLEAN_TERM_VARIABLE_309) (not (not (f BOOLEAN_TERM_VARIABLE_309))))
+  no connect
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_309)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_309))
+...no possible symm
+  new node (= (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_309))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_294)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_294))
+...existing non-assume REFL
+...success, no overwrite
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_294))), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_294)))
+...existing non-assume REFL
+...success, no overwrite
+CDProof::addStep: ProofCnfStream::LazyCDProof : CONG (= (or (not (not (f BOOLEAN_TERM_VARIABLE_309))) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294))) (or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294)))), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (or (not (not (f BOOLEAN_TERM_VARIABLE_309))) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294))) (or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294))))
+...no symm, return null
+- get child (= (not (not (f BOOLEAN_TERM_VARIABLE_309))) (f BOOLEAN_TERM_VARIABLE_309))
+CDProof::getProofSymm: (= (not (not (f BOOLEAN_TERM_VARIABLE_309))) (f BOOLEAN_TERM_VARIABLE_309))
+...existing non-assume MACRO_SR_PRED_INTRO
+- get child (= (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_309))
+CDProof::getProofSymm: (= (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_309))
+...existing non-assume REFL
+- get child (= (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_294))
+CDProof::getProofSymm: (= (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_294))
+...existing non-assume REFL
+- get child (= (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_294)))
+CDProof::getProofSymm: (= (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_294)))
+...existing non-assume REFL
+  new node (= (or (not (not (f BOOLEAN_TERM_VARIABLE_309))) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294))) (or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294))))...
+  check connect symmetry (= (or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294))) (or (not (not (f BOOLEAN_TERM_VARIABLE_309))) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294))))
+  no connect
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : EQ_RESOLVE (or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294))), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294)))
+...no possible symm
+- get child (or (not (not (f BOOLEAN_TERM_VARIABLE_309))) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294)))
+CDProof::getProofSymm: (or (not (not (f BOOLEAN_TERM_VARIABLE_309))) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294)))
+...existing non-assume RESOLUTION
+- get child (= (or (not (not (f BOOLEAN_TERM_VARIABLE_309))) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294))) (or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294))))
+CDProof::getProofSymm: (= (or (not (not (f BOOLEAN_TERM_VARIABLE_309))) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294))) (or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294))))
+...existing non-assume CONG
+  new node (or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294)))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REORDERING (or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)), ensureChildren = 0, overwrite policy = NEVER
+CDProof::getProofSymm: (or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+...no possible symm
+- get child (or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294)))
+CDProof::getProofSymm: (or (f BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294)))
+...existing non-assume EQ_RESOLVE
+  new node (or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))...
+...return 1
+CnfStream::getLiteral((not (f BOOLEAN_TERM_VARIABLE_309))) => ~8
+CnfStream::getLiteral(BOOLEAN_TERM_VARIABLE_309) => 11
+CnfStream::getLiteral(BOOLEAN_TERM_VARIABLE_294) => 9
+getNode(~7)
+getNode(~7) => (not (f BOOLEAN_TERM_VARIABLE_294))
+getNode(8)
+getNode(8) => (f BOOLEAN_TERM_VARIABLE_309)
+getNode(~11)
+getNode(~11) => (not BOOLEAN_TERM_VARIABLE_309)
+getNode(~9)
+getNode(~9) => (not BOOLEAN_TERM_VARIABLE_294)
+TheoryProxy::explainPropagation: clause for lit is ~7 [(not (f BOOLEAN_TERM_VARIABLE_294))] 8 [(f BOOLEAN_TERM_VARIABLE_309)] ~11 [(not BOOLEAN_TERM_VARIABLE_309)] ~9 [(not BOOLEAN_TERM_VARIABLE_294)]
+Add clause adding a new lemma: ~7  8 ~9 ~11
+Solver::updateLemmas: working on lemma: ~7  8 ~9 ~11
+Solver::updateLemmas: unit theory lemma: ~7
+SatProofManager::startResChain: ~7 8 ~9 ~11
+SatProofManager::addResolutionStep: [~9] 9
+SatProofManager::addResolutionStep: [~11] 11
+Solver::reason(7)
+  Solver::reason: 5,  7  8
+SatProofManager::addResolutionStep: [~7] 7 8
+SatProofManager::addResolutionStep: (or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
+Solver::reason(8)
+  Solver::reason: 4294967295, CRef_Undef
+getNode(8)
+getNode(8) => (f BOOLEAN_TERM_VARIABLE_309)
+SatProofManager::endResChain: chain_res for 8, (f BOOLEAN_TERM_VARIABLE_309)
+SatProofManager::endResChain:   8, ~7, ~9, ~11 : (or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+SatProofManager::endResChain:   [~9] 9 : [(not BOOLEAN_TERM_VARIABLE_294)] BOOLEAN_TERM_VARIABLE_294
+SatProofManager::endResChain:   [~11] 11 : [(not BOOLEAN_TERM_VARIABLE_309)] BOOLEAN_TERM_VARIABLE_309
+SatProofManager::endResChain:   [~7] 7, 8 : [(not (f BOOLEAN_TERM_VARIABLE_294))] (or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
+SatProofManager::endResChain: creating step for computed conclusion (or (f BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_309))
+CDProof::addStep: CDProof::endResChain : CHAIN_RESOLUTION (or (f BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_309)), ensureChildren = 0, overwrite policy = ALWAYS
+CDProof::getProofSymm: (or (f BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_309))
+...no possible symm
+- get child (or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+CDProof::getProofSymm: (or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+...no possible symm
+--- add assume
+- get child BOOLEAN_TERM_VARIABLE_294
+CDProof::getProofSymm: BOOLEAN_TERM_VARIABLE_294
+...no possible symm
+--- add assume
+- get child BOOLEAN_TERM_VARIABLE_309
+CDProof::getProofSymm: BOOLEAN_TERM_VARIABLE_309
+...no possible symm
+--- add assume
+- get child (or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
+CDProof::getProofSymm: (or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
+...no possible symm
+--- add assume
+  new node (or (f BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_309))...
+...return 1
+CDProof::addStep: CDProof::endResChain : REFL (= (f BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_309)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (f BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_309))
+...no possible symm
+  new node (= (f BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_309))...
+...return 1
+CDProof::addStep: CDProof::endResChain : REFL (= (f BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_309)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (f BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_309))
+...existing non-assume REFL
+...success, no overwrite
+CDProof::addStep: CDProof::endResChain : FACTORING (f BOOLEAN_TERM_VARIABLE_309), ensureChildren = 0, overwrite policy = NEVER
+CDProof::getProofSymm: (f BOOLEAN_TERM_VARIABLE_309)
+...no possible symm
+- get child (or (f BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_309))
+CDProof::getProofSymm: (or (f BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_309))
+...existing non-assume CHAIN_RESOLUTION
+  new node (f BOOLEAN_TERM_VARIABLE_309)...
+...return 1
+CDProof::getProofSymm: (f BOOLEAN_TERM_VARIABLE_309)
+...existing non-assume FACTORING
+getNode(~7)
+getNode(~7) => (not (f BOOLEAN_TERM_VARIABLE_294))
+CnfStream::getLiteral((f BOOLEAN_TERM_VARIABLE_294)) => 7
+CnfStream::getLiteral((f BOOLEAN_TERM_VARIABLE_294)) => 7
+getNode(7)
+getNode(7) => (f BOOLEAN_TERM_VARIABLE_294)
+CDProof::addStep: LazyCDProof : TRUE_INTRO (= (f BOOLEAN_TERM_VARIABLE_309) true), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (f BOOLEAN_TERM_VARIABLE_309) true)
+...no symm, return null
+- get child (f BOOLEAN_TERM_VARIABLE_309)
+CDProof::getProofSymm: (f BOOLEAN_TERM_VARIABLE_309)
+...no possible symm
+--- add assume
+  new node (= (f BOOLEAN_TERM_VARIABLE_309) true)...
+  check connect symmetry (= true (f BOOLEAN_TERM_VARIABLE_309))
+  no connect
+...return 1
+CDProof::addStep: LazyCDProof : TRUE_INTRO (= BOOLEAN_TERM_VARIABLE_309 true), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= BOOLEAN_TERM_VARIABLE_309 true)
+...no symm, return null
+- get child BOOLEAN_TERM_VARIABLE_309
+CDProof::getProofSymm: BOOLEAN_TERM_VARIABLE_309
+...no possible symm
+--- add assume
+  new node (= BOOLEAN_TERM_VARIABLE_309 true)...
+  check connect symmetry (= true BOOLEAN_TERM_VARIABLE_309)
+  no connect
+...return 1
+CDProof::addStep: LazyCDProof : TRUE_INTRO (= BOOLEAN_TERM_VARIABLE_294 true), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= BOOLEAN_TERM_VARIABLE_294 true)
+...no symm, return null
+- get child BOOLEAN_TERM_VARIABLE_294
+CDProof::getProofSymm: BOOLEAN_TERM_VARIABLE_294
+...no possible symm
+--- add assume
+  new node (= BOOLEAN_TERM_VARIABLE_294 true)...
+  check connect symmetry (= true BOOLEAN_TERM_VARIABLE_294)
+  no connect
+...return 1
+CDProof::addStep: LazyCDProof : TRANS (= BOOLEAN_TERM_VARIABLE_294 BOOLEAN_TERM_VARIABLE_309), ensureChildren = 1, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= BOOLEAN_TERM_VARIABLE_294 BOOLEAN_TERM_VARIABLE_309)
+...no symm, return null
+- get child (= BOOLEAN_TERM_VARIABLE_294 true)
+CDProof::getProofSymm: (= BOOLEAN_TERM_VARIABLE_294 true)
+...existing non-assume TRUE_INTRO
+- get child (= true BOOLEAN_TERM_VARIABLE_309)
+CDProof::getProofSymm: (= true BOOLEAN_TERM_VARIABLE_309)
+...fresh make symm
+  new node (= BOOLEAN_TERM_VARIABLE_294 BOOLEAN_TERM_VARIABLE_309)...
+  check connect symmetry (= BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294)
+  no connect
+...return 1
+CDProof::addStep: LazyCDProof : CONG (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)), ensureChildren = 1, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
+...no symm, return null
+- get child (= BOOLEAN_TERM_VARIABLE_294 BOOLEAN_TERM_VARIABLE_309)
+CDProof::getProofSymm: (= BOOLEAN_TERM_VARIABLE_294 BOOLEAN_TERM_VARIABLE_309)
+...existing non-assume TRANS
+  new node (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))...
+  check connect symmetry (= (f BOOLEAN_TERM_VARIABLE_309) (f BOOLEAN_TERM_VARIABLE_294))
+  no connect
+...return 1
+CDProof::addStep: LazyCDProof : TRANS (= (f BOOLEAN_TERM_VARIABLE_294) true), ensureChildren = 1, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (f BOOLEAN_TERM_VARIABLE_294) true)
+...no symm, return null
+- get child (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
+CDProof::getProofSymm: (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
+...existing non-assume CONG
+- get child (= (f BOOLEAN_TERM_VARIABLE_309) true)
+CDProof::getProofSymm: (= (f BOOLEAN_TERM_VARIABLE_309) true)
+...existing non-assume TRUE_INTRO
+  new node (= (f BOOLEAN_TERM_VARIABLE_294) true)...
+  check connect symmetry (= true (f BOOLEAN_TERM_VARIABLE_294))
+  no connect
+...return 1
+CDProof::addStep: LazyCDProof : TRUE_ELIM (f BOOLEAN_TERM_VARIABLE_294), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (f BOOLEAN_TERM_VARIABLE_294)
+...no possible symm
+- get child (= (f BOOLEAN_TERM_VARIABLE_294) true)
+CDProof::getProofSymm: (= (f BOOLEAN_TERM_VARIABLE_294) true)
+...existing non-assume TRANS
+  new node (f BOOLEAN_TERM_VARIABLE_294)...
+...return 1
+LazyCDProof::mkLazyProof (f BOOLEAN_TERM_VARIABLE_294)
+CDProof::getProofSymm: (f BOOLEAN_TERM_VARIABLE_294)
+...existing non-assume TRUE_ELIM
+LazyCDProof: Call generator pfee::LazyCDProof::theory::uf::ee for assumption (f BOOLEAN_TERM_VARIABLE_309)
+LazyCDProof::mkLazyProof (f BOOLEAN_TERM_VARIABLE_309)
+CDProof::getProofSymm: (f BOOLEAN_TERM_VARIABLE_309)
+...no possible symm
+...no generators, finished
+LazyCDProof: Successfully added fact for (f BOOLEAN_TERM_VARIABLE_309)
+LazyCDProof: Call generator pfee::LazyCDProof::theory::uf::ee for assumption BOOLEAN_TERM_VARIABLE_309
+LazyCDProof::mkLazyProof BOOLEAN_TERM_VARIABLE_309
+CDProof::getProofSymm: BOOLEAN_TERM_VARIABLE_309
+...no possible symm
+...no generators, finished
+LazyCDProof: Successfully added fact for BOOLEAN_TERM_VARIABLE_309
+LazyCDProof: Call generator pfee::LazyCDProof::theory::uf::ee for assumption BOOLEAN_TERM_VARIABLE_294
+LazyCDProof::mkLazyProof BOOLEAN_TERM_VARIABLE_294
+CDProof::getProofSymm: BOOLEAN_TERM_VARIABLE_294
+...no possible symm
+...no generators, finished
+LazyCDProof: Successfully added fact for BOOLEAN_TERM_VARIABLE_294
+...finished
+ProofCnfStream::convertPropagation: proven explanation(=> (and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_294))
+LazyCDProof::addLazyStep: (=> (and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_294)) set to generator pfee::theory::uf::ee
+ProofCnfStream::convertPropagation: adding IMPLIES_ELIM rule to conclude (or (not (and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294)) (f BOOLEAN_TERM_VARIABLE_294))
+CDProof::addStep: ProofCnfStream::LazyCDProof : IMPLIES_ELIM (or (not (and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294)) (f BOOLEAN_TERM_VARIABLE_294)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (or (not (and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294)) (f BOOLEAN_TERM_VARIABLE_294))
+...no possible symm
+- get child (=> (and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_294))
+CDProof::getProofSymm: (=> (and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_294))
+...no possible symm
+--- add assume
+  new node (or (not (and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294)) (f BOOLEAN_TERM_VARIABLE_294))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : CNF_AND_NEG (or (and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (or (and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294))
+...no possible symm
+  new node (or (and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : RESOLUTION (or (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_294)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (or (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_294))
+...no possible symm
+- get child (or (and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294))
+CDProof::getProofSymm: (or (and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294))
+...existing non-assume CNF_AND_NEG
+- get child (or (not (and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294)) (f BOOLEAN_TERM_VARIABLE_294))
+CDProof::getProofSymm: (or (not (and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294)) (f BOOLEAN_TERM_VARIABLE_294))
+...existing non-assume IMPLIES_ELIM
+  new node (or (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_294))...
+...return 1
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (not (f BOOLEAN_TERM_VARIABLE_309)) (not (f BOOLEAN_TERM_VARIABLE_309))), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (not (f BOOLEAN_TERM_VARIABLE_309)) (not (f BOOLEAN_TERM_VARIABLE_309)))
+...existing non-assume REFL
+...success, no overwrite
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_309)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_309))
+...existing non-assume REFL
+...success, no overwrite
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_294)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_294))
+...existing non-assume REFL
+...success, no overwrite
+CDProof::addStep: ProofCnfStream::LazyCDProof : REFL (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_294)), ensureChildren = 0, overwrite policy = ASSUME_ONLY
+CDProof::getProofSymm: (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_294))
+...existing non-assume REFL
+...success, no overwrite
+CDProof::addStep: ProofCnfStream::LazyCDProof : REORDERING (or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)), ensureChildren = 0, overwrite policy = NEVER
+CDProof::getProofSymm: (or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+...no possible symm
+- get child (or (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_294))
+CDProof::getProofSymm: (or (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_309) (not BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_294))
+...existing non-assume RESOLUTION
+  new node (or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))...
+...return 1
+CnfStream::getLiteral((f BOOLEAN_TERM_VARIABLE_309)) => 8
+CnfStream::getLiteral(BOOLEAN_TERM_VARIABLE_309) => 11
+CnfStream::getLiteral(BOOLEAN_TERM_VARIABLE_294) => 9
+getNode(7)
+getNode(7) => (f BOOLEAN_TERM_VARIABLE_294)
+getNode(~8)
+getNode(~8) => (not (f BOOLEAN_TERM_VARIABLE_309))
+getNode(~11)
+getNode(~11) => (not BOOLEAN_TERM_VARIABLE_309)
+getNode(~9)
+getNode(~9) => (not BOOLEAN_TERM_VARIABLE_294)
+TheoryProxy::explainPropagation: clause for lit is 7 [(f BOOLEAN_TERM_VARIABLE_294)] ~8 [(not (f BOOLEAN_TERM_VARIABLE_309))] ~11 [(not BOOLEAN_TERM_VARIABLE_309)] ~9 [(not BOOLEAN_TERM_VARIABLE_294)]
+Add clause adding a new lemma:  7 ~8 ~9 ~11
+Solver::updateLemmas: working on lemma:  7 ~8 ~9 ~11
+Solver::updateLemmas: unit theory lemma:  7
+SatProofManager::finalizeProof: conflicting clause: 7 ~8 ~9 ~11
+SatProofManager::finalizeProof: conflicting clause node: (or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+    SatProofManager::tryJustifyingLit: Lit: ~7 [(not (f BOOLEAN_TERM_VARIABLE_294))]
+    Solver::reason(7)
+      Solver::reason: 0,     ~7     ~8
+    SatProofManager::tryJustifyingLit: with clause:     ~7     ~8
+        SatProofManager::tryJustifyingLit: Lit: 8 [(f BOOLEAN_TERM_VARIABLE_309)]
+        Solver::reason(8)
+          Solver::reason: 4294967295,         CRef_Undef
+        SatProofManager::tryJustifyingLit: no SAT reason
+        SatProofManager::tryJustifyingLit:   retrieve previous proof
+        CDProof::addProof: add proof (no copy), fact (f BOOLEAN_TERM_VARIABLE_309)
+        CDProof::getProofSymm: (f BOOLEAN_TERM_VARIABLE_309)
+        ...no possible symm
+        ...simple, add 0x39b0840 since no proof of (f BOOLEAN_TERM_VARIABLE_309)
+    SatProofManager::tryJustifyingLit: chain_res for ~7, (not (f BOOLEAN_TERM_VARIABLE_294)) with clauses:
+    SatProofManager::tryJustifyingLit:   (or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309)))
+    SatProofManager::tryJustifyingLit:   (f BOOLEAN_TERM_VARIABLE_309)     [(not (f BOOLEAN_TERM_VARIABLE_309))]
+    CDProof::addStep: SatProofManager::CDProof : CHAIN_RESOLUTION (not (f BOOLEAN_TERM_VARIABLE_294)), ensureChildren = 0, overwrite policy = ALWAYS
+    CDProof::getProofSymm: (not (f BOOLEAN_TERM_VARIABLE_294))
+    ...no possible symm
+    - get child (or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309)))
+    CDProof::getProofSymm: (or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309)))
+    ...no possible symm
+    --- add assume
+    - get child (f BOOLEAN_TERM_VARIABLE_309)
+    CDProof::getProofSymm: (f BOOLEAN_TERM_VARIABLE_309)
+    ...existing non-assume FACTORING
+      new node (not (f BOOLEAN_TERM_VARIABLE_294))...
+    ...return 1
+  ===========
+    SatProofManager::tryJustifyingLit: Lit: 8 [(f BOOLEAN_TERM_VARIABLE_309)]
+    Solver::reason(8)
+      Solver::reason: 4294967295,     CRef_Undef
+    SatProofManager::tryJustifyingLit: no SAT reason
+    SatProofManager::tryJustifyingLit:   retrieve previous proof
+    CDProof::addProof: add proof (no copy), fact (f BOOLEAN_TERM_VARIABLE_309)
+    CDProof::getProofSymm: (f BOOLEAN_TERM_VARIABLE_309)
+    ...existing non-assume FACTORING
+    ...no overwrite
+  ===========
+    SatProofManager::tryJustifyingLit: Lit: 9 [BOOLEAN_TERM_VARIABLE_294]
+    Solver::reason(9)
+      Solver::reason: 4294967295,     CRef_Undef
+    SatProofManager::tryJustifyingLit: no SAT reason
+  ===========
+    SatProofManager::tryJustifyingLit: Lit: 11 [BOOLEAN_TERM_VARIABLE_309]
+    Solver::reason(11)
+      Solver::reason: 4294967295,     CRef_Undef
+    SatProofManager::tryJustifyingLit: no SAT reason
+  ===========
+SatProofManager::finalizeProof: chain_res for false with clauses:
+SatProofManager::finalizeProof:   (or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+SatProofManager::finalizeProof:   (not (f BOOLEAN_TERM_VARIABLE_294)) [(f BOOLEAN_TERM_VARIABLE_294)]
+SatProofManager::finalizeProof:   (f BOOLEAN_TERM_VARIABLE_309) [(not (f BOOLEAN_TERM_VARIABLE_309))]
+SatProofManager::finalizeProof:   BOOLEAN_TERM_VARIABLE_294 [(not BOOLEAN_TERM_VARIABLE_294)]
+SatProofManager::finalizeProof:   BOOLEAN_TERM_VARIABLE_309 [(not BOOLEAN_TERM_VARIABLE_309)]
+CDProof::addStep: SatProofManager::CDProof : CHAIN_RESOLUTION false, ensureChildren = 0, overwrite policy = ALWAYS
+CDProof::getProofSymm: false
+...no possible symm
+- get child (or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+CDProof::getProofSymm: (or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+...no possible symm
+--- add assume
+- get child (not (f BOOLEAN_TERM_VARIABLE_294))
+CDProof::getProofSymm: (not (f BOOLEAN_TERM_VARIABLE_294))
+...existing non-assume CHAIN_RESOLUTION
+- get child (f BOOLEAN_TERM_VARIABLE_309)
+CDProof::getProofSymm: (f BOOLEAN_TERM_VARIABLE_309)
+...existing non-assume FACTORING
+- get child BOOLEAN_TERM_VARIABLE_294
+CDProof::getProofSymm: BOOLEAN_TERM_VARIABLE_294
+...existing non-assume CHAIN_RESOLUTION
+- get child BOOLEAN_TERM_VARIABLE_309
+CDProof::getProofSymm: BOOLEAN_TERM_VARIABLE_309
+...existing non-assume CHAIN_RESOLUTION
+  new node false...
+...return 1
+PropPfManager::getProof: Getting resolution proof of false
+CDProof::getProofSymm: false
+...existing non-assume CHAIN_RESOLUTION
+PropPfManager::getProof: initial free assumptions are:
+- y1
+- (or x0 z0)
+- BOOLEAN_TERM_VARIABLE_294
+- BOOLEAN_TERM_VARIABLE_309
+- (or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309)))
+- (or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
+- (or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0)))
+- (or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1)))
+- (or (and x1 y1) (not y1))
+- (or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+- (or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+PropPfManager::getProof: proof is (CHAIN_RESOLUTION (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (CHAIN_RESOLUTION (ASSUME |:args| ((or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309))))) (FACTORING (CHAIN_RESOLUTION (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_294)) (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309)) (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))) |:args| ((not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294))))) |:args| ((not (f BOOLEAN_TERM_VARIABLE_309)))) (FACTORING (CHAIN_RESOLUTION (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_294)) (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309)) (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))) |:args| ((not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294))))) (CHAIN_RESOLUTION (ASSUME |:args| ((or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0))))) (ASSUME |:args| ((or x0 z0))) |:args| ((not (or x0 z0)))) (CHAIN_RESOLUTION (ASSUME |:args| ((or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1))))) (CHAIN_RESOLUTION (ASSUME |:args| ((or (and x1 y1) (not y1)))) (ASSUME |:args| (y1)) |:args| ((not y1))) |:args| ((not (and x1 y1)))) |:args| ((f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))
+PropPfManager::getProof: Connecting with CNF proof
+LazyCDProof::mkLazyProof (or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1)))
+CDProof::getProofSymm: (or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1)))
+...existing non-assume EQUIV_ELIM2
+LazyCDProof: ProofCnfStream::LazyCDProof : No generator for (= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))
+...finished
+CDProof::addProof: add proof (no copy), fact (or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1)))
+CDProof::getProofSymm: (or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1)))
+...no possible symm
+...simple, add 0x7ffec2a94240 since no proof of (or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1)))
+CDProof::getProofSymm: (or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1)))
+...existing non-assume EQUIV_ELIM2
+LazyCDProof::mkLazyProof (or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0)))
+CDProof::getProofSymm: (or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0)))
+...existing non-assume EQUIV_ELIM2
+LazyCDProof: ProofCnfStream::LazyCDProof : No generator for (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))
+...finished
+CDProof::addProof: add proof (no copy), fact (or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0)))
+CDProof::getProofSymm: (or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0)))
+...no possible symm
+...simple, add 0x7ffec2a94240 since no proof of (or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0)))
+CDProof::getProofSymm: (or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0)))
+...existing non-assume EQUIV_ELIM2
+LazyCDProof::mkLazyProof (or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
+CDProof::getProofSymm: (or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
+...existing non-assume NOT_EQUIV_ELIM1
+LazyCDProof: ProofCnfStream::LazyCDProof : No generator for (not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))
+...finished
+CDProof::addProof: add proof (no copy), fact (or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
+CDProof::getProofSymm: (or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
+...no possible symm
+...simple, add 0x7ffec2a94240 since no proof of (or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
+CDProof::getProofSymm: (or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))
+...existing non-assume NOT_EQUIV_ELIM1
+LazyCDProof::mkLazyProof (or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+CDProof::getProofSymm: (or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+...existing non-assume REORDERING
+LazyCDProof: Call generator pfee::theory::uf::ee for assumption (=> (and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294)))
+LazyCDProof: Successfully added fact for (=> (and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_294)))
+...finished
+CDProof::addProof: add proof (no copy), fact (or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+CDProof::getProofSymm: (or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+...no possible symm
+...simple, add 0x7ffec2a94240 since no proof of (or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+CDProof::getProofSymm: (or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+...existing non-assume REORDERING
+LazyCDProof::mkLazyProof (or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309)))
+CDProof::getProofSymm: (or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309)))
+...existing non-assume NOT_EQUIV_ELIM2
+LazyCDProof: ProofCnfStream::LazyCDProof : No generator for (not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))
+...finished
+CDProof::addProof: add proof (no copy), fact (or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309)))
+CDProof::getProofSymm: (or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309)))
+...no possible symm
+...simple, add 0x7ffec2a94240 since no proof of (or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309)))
+CDProof::getProofSymm: (or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309)))
+...existing non-assume NOT_EQUIV_ELIM2
+LazyCDProof::mkLazyProof (or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+CDProof::getProofSymm: (or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+...existing non-assume REORDERING
+LazyCDProof: Call generator pfee::theory::uf::ee for assumption (=> (and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_294))
+LazyCDProof: Successfully added fact for (=> (and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_294))
+...finished
+CDProof::addProof: add proof (no copy), fact (or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+CDProof::getProofSymm: (or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+...no possible symm
+...simple, add 0x7ffec2a94240 since no proof of (or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+CDProof::getProofSymm: (or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))
+...existing non-assume REORDERING
+PropPfManager::getProof: new free assumptions are:
+- y1
+- (or x0 z0)
+- (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))
+- (= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))
+- (not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))
+- (or (and x1 y1) (not y1))
+PropPfManager::getProof: assertions are:
+- (or x0 y0)
+- (or (not y0) z0)
+- x1
+- y1
+- (not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))
+- true
+- (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))
+- (= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))
+PropPfManager::getProof: proof is (CHAIN_RESOLUTION (REORDERING (RESOLUTION (CNF_AND_NEG |:args| ((and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (IMPLIES_ELIM (SCOPE (TRUE_ELIM (TRANS (CONG (TRANS (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_294))) (SYMM (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309))))) |:args| (24 f)) (TRUE_INTRO (ASSUME |:args| ((f BOOLEAN_TERM_VARIABLE_309)))))) |:args| ((f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (CHAIN_RESOLUTION (NOT_EQUIV_ELIM2 (ASSUME |:args| ((not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))))) (FACTORING (CHAIN_RESOLUTION (REORDERING (EQ_RESOLVE (RESOLUTION (CNF_AND_NEG |:args| ((and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (IMPLIES_ELIM (SCOPE (FALSE_ELIM (TRANS (CONG (TRANS (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_294))) (SYMM (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309))))) |:args| (24 f)) (FALSE_INTRO (ASSUME |:args| ((not (f BOOLEAN_TERM_VARIABLE_309))))))) |:args| ((not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (CONG (MACRO_SR_PRED_INTRO |:args| ((= (not (not (f BOOLEAN_TERM_VARIABLE_309))) (f BOOLEAN_TERM_VARIABLE_309)))) (REFL |:args| ((not BOOLEAN_TERM_VARIABLE_309))) (REFL |:args| ((not BOOLEAN_TERM_VARIABLE_294))) (REFL |:args| ((not (f BOOLEAN_TERM_VARIABLE_294)))) |:args| (21))) |:args| ((or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))))) (ASSUME |:args| ((or x0 z0))) |:args| ((not (or x0 z0)))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))))) (CHAIN_RESOLUTION (ASSUME |:args| ((or (and x1 y1) (not y1)))) (ASSUME |:args| (y1)) |:args| ((not y1))) |:args| ((not (and x1 y1)))) (NOT_EQUIV_ELIM1 (ASSUME |:args| ((not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))))) |:args| ((not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294))))) |:args| ((not (f BOOLEAN_TERM_VARIABLE_309)))) (FACTORING (CHAIN_RESOLUTION (REORDERING (EQ_RESOLVE (RESOLUTION (CNF_AND_NEG |:args| ((and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (IMPLIES_ELIM (SCOPE (FALSE_ELIM (TRANS (CONG (TRANS (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_294))) (SYMM (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309))))) |:args| (24 f)) (FALSE_INTRO (ASSUME |:args| ((not (f BOOLEAN_TERM_VARIABLE_309))))))) |:args| ((not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (CONG (MACRO_SR_PRED_INTRO |:args| ((= (not (not (f BOOLEAN_TERM_VARIABLE_309))) (f BOOLEAN_TERM_VARIABLE_309)))) (REFL |:args| ((not BOOLEAN_TERM_VARIABLE_309))) (REFL |:args| ((not BOOLEAN_TERM_VARIABLE_294))) (REFL |:args| ((not (f BOOLEAN_TERM_VARIABLE_294)))) |:args| (21))) |:args| ((or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))))) (ASSUME |:args| ((or x0 z0))) |:args| ((not (or x0 z0)))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))))) (CHAIN_RESOLUTION (ASSUME |:args| ((or (and x1 y1) (not y1)))) (ASSUME |:args| (y1)) |:args| ((not y1))) |:args| ((not (and x1 y1)))) (NOT_EQUIV_ELIM1 (ASSUME |:args| ((not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))))) |:args| ((not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294))))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))))) (ASSUME |:args| ((or x0 z0))) |:args| ((not (or x0 z0)))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))))) (CHAIN_RESOLUTION (ASSUME |:args| ((or (and x1 y1) (not y1)))) (ASSUME |:args| (y1)) |:args| ((not y1))) |:args| ((not (and x1 y1)))) |:args| ((f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))
+PropPfManager::getProof: checking if can make scope...
+Fatal failure within std::shared_ptr<CVC4::ProofNode> CVC4::ProofNodeManager::mkScope(std::shared_ptr<CVC4::ProofNode>, std::vector<CVC4::NodeTemplate<true> >&, bool, bool, CVC4::Node) at /home/hbarbosa/cvc/wt-proofnew/src/expr/proof_node_manager.cpp:117
+Unreachable code reachedGenerated a proof that is not closed by the scope: (CHAIN_RESOLUTION (REORDERING (RESOLUTION (CNF_AND_NEG |:args| ((and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (IMPLIES_ELIM (SCOPE (TRUE_ELIM (TRANS (CONG (TRANS (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_294))) (SYMM (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309))))) |:args| (24 f)) (TRUE_INTRO (ASSUME |:args| ((f BOOLEAN_TERM_VARIABLE_309)))))) |:args| ((f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((and (f BOOLEAN_TERM_VARIABLE_309) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (CHAIN_RESOLUTION (NOT_EQUIV_ELIM2 (ASSUME |:args| ((not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))))) (FACTORING (CHAIN_RESOLUTION (REORDERING (EQ_RESOLVE (RESOLUTION (CNF_AND_NEG |:args| ((and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (IMPLIES_ELIM (SCOPE (FALSE_ELIM (TRANS (CONG (TRANS (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_294))) (SYMM (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309))))) |:args| (24 f)) (FALSE_INTRO (ASSUME |:args| ((not (f BOOLEAN_TERM_VARIABLE_309))))))) |:args| ((not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (CONG (MACRO_SR_PRED_INTRO |:args| ((= (not (not (f BOOLEAN_TERM_VARIABLE_309))) (f BOOLEAN_TERM_VARIABLE_309)))) (REFL |:args| ((not BOOLEAN_TERM_VARIABLE_309))) (REFL |:args| ((not BOOLEAN_TERM_VARIABLE_294))) (REFL |:args| ((not (f BOOLEAN_TERM_VARIABLE_294)))) |:args| (21))) |:args| ((or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))))) (ASSUME |:args| ((or x0 z0))) |:args| ((not (or x0 z0)))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))))) (CHAIN_RESOLUTION (ASSUME |:args| ((or (and x1 y1) (not y1)))) (ASSUME |:args| (y1)) |:args| ((not y1))) |:args| ((not (and x1 y1)))) (NOT_EQUIV_ELIM1 (ASSUME |:args| ((not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))))) |:args| ((not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294))))) |:args| ((not (f BOOLEAN_TERM_VARIABLE_309)))) (FACTORING (CHAIN_RESOLUTION (REORDERING (EQ_RESOLVE (RESOLUTION (CNF_AND_NEG |:args| ((and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (IMPLIES_ELIM (SCOPE (FALSE_ELIM (TRANS (CONG (TRANS (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_294))) (SYMM (TRUE_INTRO (ASSUME |:args| (BOOLEAN_TERM_VARIABLE_309))))) |:args| (24 f)) (FALSE_INTRO (ASSUME |:args| ((not (f BOOLEAN_TERM_VARIABLE_309))))))) |:args| ((not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) |:args| ((and (not (f BOOLEAN_TERM_VARIABLE_309)) BOOLEAN_TERM_VARIABLE_309 BOOLEAN_TERM_VARIABLE_294))) (CONG (MACRO_SR_PRED_INTRO |:args| ((= (not (not (f BOOLEAN_TERM_VARIABLE_309))) (f BOOLEAN_TERM_VARIABLE_309)))) (REFL |:args| ((not BOOLEAN_TERM_VARIABLE_309))) (REFL |:args| ((not BOOLEAN_TERM_VARIABLE_294))) (REFL |:args| ((not (f BOOLEAN_TERM_VARIABLE_294)))) |:args| (21))) |:args| ((or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))))) (ASSUME |:args| ((or x0 z0))) |:args| ((not (or x0 z0)))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))))) (CHAIN_RESOLUTION (ASSUME |:args| ((or (and x1 y1) (not y1)))) (ASSUME |:args| (y1)) |:args| ((not y1))) |:args| ((not (and x1 y1)))) (NOT_EQUIV_ELIM1 (ASSUME |:args| ((not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))))) |:args| ((not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294))))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))))) (ASSUME |:args| ((or x0 z0))) |:args| ((not (or x0 z0)))) (CHAIN_RESOLUTION (EQUIV_ELIM2 (ASSUME |:args| ((= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))))) (CHAIN_RESOLUTION (ASSUME |:args| ((or (and x1 y1) (not y1)))) (ASSUME |:args| (y1)) |:args| ((not y1))) |:args| ((not (and x1 y1)))) |:args| ((f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))
+Free assumption: (or x0 z0)
+- assumption: (= BOOLEAN_TERM_VARIABLE_309 (and x1 y1))
+- assumption: (not (= (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))
+- assumption: y1
+- assumption: (= BOOLEAN_TERM_VARIABLE_294 (or x0 z0))
+- assumption: x1
+- assumption: true
+- assumption: (or (not y0) z0)
+- assumption: (or x0 y0)
+
+
+Aborted (core dumped)

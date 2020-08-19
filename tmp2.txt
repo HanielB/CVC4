@@ -1,0 +1,43 @@
+(CHAIN_RESOLUTION
+  (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))))
+  (CHAIN_RESOLUTION
+    (ASSUME |:args| ((or (not (f BOOLEAN_TERM_VARIABLE_294)) (not (f BOOLEAN_TERM_VARIABLE_309)))))
+    (FACTORING
+      (CHAIN_RESOLUTION
+        (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))))
+        (CHAIN_RESOLUTION
+          (ASSUME |:args| ((or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0)))))
+          (ASSUME |:args| ((or x0 z0))) |:args| ((not (or x0 z0))))
+        (CHAIN_RESOLUTION
+          (ASSUME |:args| ((or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1)))))
+          (CHAIN_RESOLUTION
+            (ASSUME |:args| ((or (and x1 y1) (not y1))))
+            (ASSUME |:args| (y1))
+            |:args| ((not y1))) |:args| ((not (and x1 y1)))) (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309)))) |:args| ((not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)))))
+    |:args| ((not (f BOOLEAN_TERM_VARIABLE_309))))
+  (FACTORING
+    (CHAIN_RESOLUTION
+      (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309))))
+      (CHAIN_RESOLUTION
+        (ASSUME |:args| ((or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0)))))
+        (ASSUME |:args| ((or x0 z0)))
+        |:args| ((not (or x0 z0))))
+      (CHAIN_RESOLUTION
+        (ASSUME |:args| ((or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1)))))
+        (CHAIN_RESOLUTION
+          (ASSUME |:args| ((or (and x1 y1) (not y1))))
+          (ASSUME |:args| (y1))
+          |:args| ((not y1))) |:args| ((not (and x1 y1))))
+      (ASSUME |:args| ((or (f BOOLEAN_TERM_VARIABLE_294) (f BOOLEAN_TERM_VARIABLE_309))))
+      |:args| ((not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309) (not (f BOOLEAN_TERM_VARIABLE_294)))))
+  (CHAIN_RESOLUTION
+    (ASSUME |:args| ((or BOOLEAN_TERM_VARIABLE_294 (not (or x0 z0)))))
+    (ASSUME |:args| ((or x0 z0)))
+    |:args| ((not (or x0 z0))))
+  (CHAIN_RESOLUTION
+    (ASSUME |:args| ((or BOOLEAN_TERM_VARIABLE_309 (not (and x1 y1)))))
+    (CHAIN_RESOLUTION
+      (ASSUME |:args| ((or (and x1 y1) (not y1))))
+      (ASSUME |:args| (y1))
+      |:args| ((not y1))) |:args| ((not (and x1 y1))))
+  |:args| ((f BOOLEAN_TERM_VARIABLE_294) (not (f BOOLEAN_TERM_VARIABLE_309)) (not BOOLEAN_TERM_VARIABLE_294) (not BOOLEAN_TERM_VARIABLE_309)))
