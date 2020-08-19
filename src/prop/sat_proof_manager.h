@@ -46,9 +46,7 @@ class SatProofManager
 
   void startResChain(Minisat::Clause& start);
   // resolution with unit clause ~lit, to be justified
-  //
-  // bool is on whether to justify the ~lit recursively
-  void addResolutionStep(Minisat::Lit lit, bool recJustify = false);
+  void addResolutionStep(Minisat::Lit lit);
   // resolution with clause using lit as pivot. Sign determines whether it's
   // being removed positively from the given clause or the implicit one it's
   // being resolved against
