@@ -469,7 +469,7 @@ bool Solver::addClause_(vec<Lit>& ps, bool removable, ClauseId& id)
       }
       // If a literal is false at 0 level (both sat and user level) we also ignore it
       if (value(ps[i]) == l_False) {
-        if (!PROOF_ON() && !CVC4::options::proofNew() && level(var(ps[i])) == 0
+        if (!PROOF_ON() && !d_pfManager && level(var(ps[i])) == 0
             && user_level(var(ps[i])) == 0)
         {
           continue;
@@ -510,7 +510,7 @@ bool Solver::addClause_(vec<Lit>& ps, bool removable, ClauseId& id)
 
       // If all false, we're in conflict
       if (ps.size() == falseLiteralsCount) {
-        if (PROOF_ON() || CVC4::options::proofNew())
+        if (PROOF_ON() || d_pfManager)
         {
           // Take care of false units here; otherwise, we need to
           // construct the clause below to give to the proof manager
@@ -541,7 +541,7 @@ bool Solver::addClause_(vec<Lit>& ps, bool removable, ClauseId& id)
         clauses_persistent.push(cr);
         attachClause(cr);
 
-        if (PROOF_ON() || CVC4::options::proofNew())
+        if (PROOF_ON() || d_pfManager)
         {
           PROOF(
                 id = ProofManager::getSatProof()->registerClause(cr, INPUT);
@@ -569,7 +569,7 @@ bool Solver::addClause_(vec<Lit>& ps, bool removable, ClauseId& id)
                   id = ProofManager::getSatProof()->registerUnitClause(ps[0], INPUT);
                 }
                 );
-          if (CVC4::options::proofNew())
+          if (d_pfManager)
           {
             // TODO HB not sure why this is commented out :)
             // if (ps.size() == 1)
@@ -619,7 +619,15 @@ bool Solver::addClause_(vec<Lit>& ps, bool removable, ClauseId& id)
 
 void Solver::attachClause(CRef cr) {
     const Clause& c = ca[cr];
-    Debug("minisat") << "Solver::attachClause(" << c << "): level " << c.level() << std::endl;
+    if (Debug.isOn("minisat"))
+    {
+      Debug("minisat") << "Solver::attachClause(" << c << "): ";
+      for (unsigned i = 0, size = c.size(); i < size; ++i)
+      {
+        Debug("minisat") << c[i] << " ";
+      }
+      Debug("minisat") << ", level " << c.level() << "\n";
+    }
     Assert(c.size() > 1);
     watches[~c[0]].push(Watcher(cr, c[1]));
     watches[~c[1]].push(Watcher(cr, c[0]));
@@ -998,7 +1006,7 @@ int Solver::analyze(CRef confl, vec<Lit>& out_learnt, int& out_btlevel)
 
     }while (pathC > 0);
     out_learnt[0] = ~p;
-    if (CVC4::options::proofNew())
+    if (d_pfManager)
     {
       Debug("newproof::sat") << "finished with learnt clause ";
       for (unsigned i = 0, size = out_learnt.size(); i < size; ++i)
@@ -2048,7 +2056,7 @@ CRef Solver::updateLemmas() {
 
       // If it's an empty lemma, we have a conflict at zero level
       if (lemma.size() == 0) {
-        Assert(!PROOF_ON() && !CVC4::options::proofNew());
+        Assert(!PROOF_ON() && !d_pfManager);
         conflict = CRef_Lazy;
         backtrackLevel = 0;
         Debug("minisat::lemmas") << "Solver::updateLemmas(): found empty clause" << std::endl;
@@ -2134,7 +2142,7 @@ CRef Solver::updateLemmas() {
           ProofManager::getCnfProof()->setClauseAssertion(id, cnf_assertion);
           ProofManager::getCnfProof()->setClauseDefinition(id, cnf_def);
         }
-        if (CVC4::options::proofNew())
+        if (d_pfManager)
         {
           Debug("pf::sat") << "Solver::updateLemmas: unit theory lemma: "
                            << lemma[0] << std::endl;
