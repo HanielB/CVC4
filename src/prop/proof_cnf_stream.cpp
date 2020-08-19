@@ -92,23 +92,14 @@ void ProofCnfStream::convertAndAssert(TNode node, bool negated)
         d_proof.addStep(
             nnode, PfRule::MACRO_SR_PRED_TRANSFORM, {node.notNode()}, {nnode});
       }
-      /*
-      Trace("cnf") << "Proof of " << nnode << " is : " << std::endl;
-      std::shared_ptr<ProofNode> pn = d_proof.getProofFor(nnode);
-      Trace("cnf") << "-- " << *pn.get() << std::endl;
-      Trace("cnf") << "-- closed = " << pn->isClosed() << std::endl;
-      if (!pn->isClosed())
-      {
-        Trace("cnf-open") << "Non-closed: " << nnode << std::endl;
-      }
-      d_proof.addProof(pn);
-      */
     }
   }
 }
 
 void ProofCnfStream::convertAndAssertAnd(TNode node, bool negated)
 {
+  Trace("cnf") << "ProofCnfStream::convertAndAssertAnd(" << node
+               << ", negated = " << (negated ? "true" : "false") << ")\n";
   Assert(node.getKind() == kind::AND);
   if (!negated)
   {
@@ -154,6 +145,8 @@ void ProofCnfStream::convertAndAssertAnd(TNode node, bool negated)
 
 void ProofCnfStream::convertAndAssertOr(TNode node, bool negated)
 {
+  Trace("cnf") << "ProofCnfStream::convertAndAssertOr(" << node
+               << ", negated = " << (negated ? "true" : "false") << ")\n";
   Assert(node.getKind() == kind::OR);
   if (!negated)
   {
@@ -188,6 +181,8 @@ void ProofCnfStream::convertAndAssertOr(TNode node, bool negated)
 
 void ProofCnfStream::convertAndAssertXor(TNode node, bool negated)
 {
+  Trace("cnf") << "ProofCnfStream::convertAndAssertXor(" << node
+               << ", negated = " << (negated ? "true" : "false") << ")\n";
   if (!negated)
   {
     // p XOR q
@@ -253,11 +248,15 @@ void ProofCnfStream::convertAndAssertXor(TNode node, bool negated)
 
 void ProofCnfStream::convertAndAssertIff(TNode node, bool negated)
 {
+  Trace("cnf") << "ProofCnfStream::convertAndAssertIff(" << node
+               << ", negated = " << (negated ? "true" : "false") << ")\n";
   if (!negated)
   {
     // p <=> q
+    Trace("cnf") << push;
     SatLiteral p = toCNF(node[0], false);
     SatLiteral q = toCNF(node[1], false);
+    Trace("cnf") << pop;
     bool added;
     NodeManager* nm = NodeManager::currentNM();
     // Construct the clauses ~p v q
@@ -286,8 +285,10 @@ void ProofCnfStream::convertAndAssertIff(TNode node, bool negated)
   else
   {
     // ~(p <=> q) is the same as p XOR q
+    Trace("cnf") << push;
     SatLiteral p = toCNF(node[0], false);
     SatLiteral q = toCNF(node[1], false);
+    Trace("cnf") << pop;
     bool added;
     NodeManager* nm = NodeManager::currentNM();
     // Construct the clauses ~p v ~q
@@ -301,7 +302,10 @@ void ProofCnfStream::convertAndAssertIff(TNode node, bool negated)
           nm->mkNode(kind::OR, node[0].notNode(), node[1].notNode());
       d_proof.addStep(
           clauseNode, PfRule::NOT_EQUIV_ELIM2, {node.notNode()}, {});
-      CDProof::factorReorderElimDoubleNeg(clauseNode, &d_proof);
+      clauseNode = CDProof::factorReorderElimDoubleNeg(clauseNode, &d_proof);
+      Trace("cnf")
+          << "ProofCnfStream::convertAndAssertIff: NOT_EQUIV_ELIM2 added norm "
+          << clauseNode << "\n";
     }
     // Construct the clauses q v p
     SatClause clause2(2);
@@ -313,7 +317,10 @@ void ProofCnfStream::convertAndAssertIff(TNode node, bool negated)
       Node clauseNode = nm->mkNode(kind::OR, node[0], node[1]);
       d_proof.addStep(
           clauseNode, PfRule::NOT_EQUIV_ELIM1, {node.notNode()}, {});
-      CDProof::factorReorderElimDoubleNeg(clauseNode, &d_proof);
+      clauseNode = CDProof::factorReorderElimDoubleNeg(clauseNode, &d_proof);
+      Trace("cnf")
+          << "ProofCnfStream::convertAndAssertIff: NOT_EQUIV_ELIM1 added norm "
+          << clauseNode << "\n";
     }
   }
 }
@@ -556,13 +563,16 @@ SatLiteral ProofCnfStream::handleAnd(TNode node)
   Assert(node.getKind() == kind::AND) << "Expecting an AND expression!";
   Assert(node.getNumChildren() > 1) << "Expecting more than 1 child!";
   Assert(!d_removable) << "Removable clauses cannot contain Boolean structure";
+  Trace("cnf") << "handleAnd(" << node << ")\n";
   // Number of children
   unsigned size = node.getNumChildren();
   // Transform all the children first (remembering the negation)
   SatClause clause(size + 1);
   for (unsigned i = 0; i < size; ++i)
   {
+    Trace("cnf") << push;
     clause[i] = ~toCNF(node[i]);
+    Trace("cnf") << pop;
   }
   // Create literal for the node
   SatLiteral lit = d_cnfStream.newLiteral(node);
@@ -573,13 +583,17 @@ SatLiteral ProofCnfStream::handleAnd(TNode node)
   // (~lit | a_1) & (~lit | a_2) & ... & (~lit | a_n)
   for (unsigned i = 0; i < size; ++i)
   {
+    Trace("cnf") << push;
     added = d_cnfStream.assertClause(node.negate(), ~lit, ~clause[i]);
+    Trace("cnf") << pop;
     if (d_pfEnabled && added)
     {
       Node clauseNode = nm->mkNode(kind::OR, node.notNode(), node[i]);
       Node iNode = nm->mkConst<Rational>(i);
       d_proof.addStep(clauseNode, PfRule::CNF_AND_POS, {}, {node, iNode});
-      CDProof::factorReorderElimDoubleNeg(clauseNode, &d_proof);
+      clauseNode = CDProof::factorReorderElimDoubleNeg(clauseNode, &d_proof);
+      Trace("cnf") << "ProofCnfStream::handleAnd: CNF_AND_POS " << i
+                   << " added norm " << clauseNode << "\n";
     }
   }
   // lit <- (a_1 & a_2 & a_3 & ... a_n)
@@ -587,7 +601,9 @@ SatLiteral ProofCnfStream::handleAnd(TNode node)
   // lit | ~a_1 | ~a_2 | ~a_3 | ... | ~a_n
   clause[size] = lit;
   // This needs to go last, as the clause might get modified by the SAT solver
+  Trace("cnf") << push;
   added = d_cnfStream.assertClause(node, clause);
+  Trace("cnf") << pop;
   if (d_pfEnabled && added)
   {
     std::vector<Node> disjuncts{node};
@@ -597,7 +613,9 @@ SatLiteral ProofCnfStream::handleAnd(TNode node)
     }
     Node clauseNode = nm->mkNode(kind::OR, disjuncts);
     d_proof.addStep(clauseNode, PfRule::CNF_AND_NEG, {}, {node});
-    CDProof::factorReorderElimDoubleNeg(clauseNode, &d_proof);
+    clauseNode = CDProof::factorReorderElimDoubleNeg(clauseNode, &d_proof);
+    Trace("cnf") << "ProofCnfStream::handleAnd: CNF_AND_NEG added norm "
+                 << clauseNode << "\n";
   }
   return lit;
 }
