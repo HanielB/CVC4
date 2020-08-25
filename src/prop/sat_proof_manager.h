@@ -108,6 +108,17 @@ class SatProofManager
    */
   std::map<Node, std::shared_ptr<ProofNode>> d_clauseProofs;
 
+/**
+We add entries to this map of the form { F |-> g }
+where the free assumptions of g.getProofFor(F) are contained in the union of:
+(1) a fixed set F1, ..., Fn,
+(2) formulas in the current domain of this map.
+As a precondition, we require:
+(1) F is not already in the domain of this map.
+(2) F does not occur in F1 ... Fn.
+*/
+// context::CDHashMap<Node, ProofGenerator *> d_gens;
+
   /** The resolution proof of false */
   CDProof d_proof;
 

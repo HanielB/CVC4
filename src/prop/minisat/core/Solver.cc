@@ -984,6 +984,35 @@ int Solver::analyze(CRef confl, vec<Lit>& out_learnt, int& out_btlevel)
                 // resolution step is added, that this literal be *directly*
                 // justified
                 d_pfManager->addResolutionStep(q);
+                if (Debug.isOn("sat-proof"))
+                {
+                  Debug("sat-proof")
+                      << "\tSolver::analyze: should expand recursively " << q
+                      << "? Its reason is ";
+                  if (vardata[var(q)].d_reason != CRef_Lazy)
+                  {
+                    if (vardata[var(q)].d_reason == CRef_Undef)
+                    {
+                      Debug("sat-proof") << "CRef_Undef";
+                    }
+                    else
+                    {
+                      for (unsigned i = 0,
+                                    size = ca[vardata[var(q)].d_reason].size();
+                           i < size;
+                           ++i)
+                      {
+                        Debug("sat-proof")
+                            << ca[vardata[var(q)].d_reason][i] << " ";
+                      }
+                    }
+                    Debug("sat-proof") << "\n";
+                  }
+                  else
+                  {
+                    Debug("sat-proof") << "CRef_Lazy\n";
+                  }
+                }
               }
             }
           }
