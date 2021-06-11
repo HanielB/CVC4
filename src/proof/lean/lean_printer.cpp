@@ -112,6 +112,11 @@ void LeanPrinter::printSort(std::ostream& out, TypeNode sort)
     out << "intSort";
     return;
   }
+  if (sort.isString())
+  {
+    out << "strSort";
+    return;
+  }
   // TODO HB will need to add cases for other theories
 
   // uninterpreted sort
@@ -130,7 +135,7 @@ void LeanPrinter::printConstant(std::ostream& out, TNode n)
   else if (k == kind::CONST_STRING)
   {
     std::string str = n.getConst<String>().toString();
-    out << "(mkVarChars [";
+    out << "(mkValChars [";
     for (size_t i = 0; i < str.length(); ++i)
     {
       out << "\'" << str.at(i) << "\'";
@@ -154,6 +159,15 @@ void LeanPrinter::printTermList(std::ostream& out, TNode n)
   }
 }
 
+void LeanPrinter::printBinary(std::ostream& out, TNode n)
+{
+  Kind k = n.getKind();
+  out << kind::toString(k) << " ";
+  printTerm(out, n[0]);
+  out << " ";
+  printTerm(out, n[1]);
+}
+
 void LeanPrinter::printTerm(std::ostream& out, TNode n, bool letTop)
 {
   Node nc = d_lbind.convert(n, "let", letTop);
@@ -161,7 +175,15 @@ void LeanPrinter::printTerm(std::ostream& out, TNode n, bool letTop)
   // printing constant symbol
   if (nChildren == 0)
   {
-    printConstant(out, nc);
+    if (nc.getKind() == kind::CONST_RATIONAL)
+    {
+      out << "(mkValInt ";
+      printConstant(out, nc);
+      out << ")";
+    } else
+    {
+      printConstant(out, nc);
+    }
     return;
   }
   // printing applications / formulas
@@ -183,7 +205,6 @@ void LeanPrinter::printTerm(std::ostream& out, TNode n, bool letTop)
       }
       else
       {
-        // out << "mkApp ";
         out << "app ";
         printTerm(out, op);
         out << " ";
@@ -247,7 +268,6 @@ void LeanPrinter::printTerm(std::ostream& out, TNode n, bool letTop)
     }
     case kind::IMPLIES:
     {
-      // out << "mkImplies ";
       out << "implies ";
       printTerm(out, nc[0]);
       out << " ";
@@ -256,14 +276,12 @@ void LeanPrinter::printTerm(std::ostream& out, TNode n, bool letTop)
     }
     case kind::NOT:
     {
-      // out << "mkNot ";
       out << "term.not ";
       printTerm(out, nc[0]);
       break;
     }
     case kind::ITE:
     {
-      // out << "mkIte ";
       out << "fIte ";
       printTerm(out, nc[0]);
       out << " ";
@@ -292,12 +310,22 @@ void LeanPrinter::printTerm(std::ostream& out, TNode n, bool letTop)
       out << "]";
       break;
     }
-    case kind::STRING_LENGTH:
-    {
-      out << "mkLength ";
-      printTerm(out, nc[0]);
-      break;
-    }
+  case kind::STRING_LENGTH:
+  {
+    out << "mkLength ";
+    printTerm(out, nc[0]);
+    break;
+  }
+  case kind::LT:
+  case kind::LEQ:
+  case kind::GT:
+  case kind::GEQ:
+  case kind::MULT:
+  case kind::PLUS:
+  {
+    printBinary(out, nc);
+    break;
+  }
     default: Unhandled() << " " << k;
   }
   out << ")" << (letTop ? "" : "\n");

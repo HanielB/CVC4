@@ -83,6 +83,8 @@ class LeanPrinter
 
   void printTermList(std::ostream& out, const std::vector<Node>& children);
 
+  void printBinary(std::ostream& out, TNode n);
+
   void printTerm(std::ostream& out, TNode n, bool letTop = true);
 
   void printLetList(std::ostream& out);

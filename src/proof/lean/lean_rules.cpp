@@ -103,6 +103,12 @@ const char* toString(LeanRule id)
     case LeanRule::FALSE_INTRO: return "falseIntro";
     case LeanRule::FALSE_ELIM: return "falseElim";
 
+    case LeanRule::STRING_LENGTH_POS: return "stringLengthPos";
+    case LeanRule::ARITH_SUM_UB: return "arithSumUb";
+    case LeanRule::ARITH_MULT_POS: return "arithMultPos";
+    case LeanRule::ARITH_MULT_NEG: return "arithMultNeg";
+    case LeanRule::EVALUATE: return "evaluate";
+
     case LeanRule::UNKNOWN: return "UNKNOWN";
     default: return "?";
   }

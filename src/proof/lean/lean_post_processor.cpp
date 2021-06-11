@@ -57,7 +57,165 @@ std::unordered_map<PfRule, LeanRule, PfRuleHashFunction> s_pfRuleToLeanRule = {
     {PfRule::CNF_ITE_NEG2, LeanRule::CNF_ITE_NEG2},
     {PfRule::CNF_ITE_NEG3, LeanRule::CNF_ITE_NEG3},
     {PfRule::NOT_NOT_ELIM, LeanRule::NOT_NOT_ELIM},
-};
+    {PfRule::STRING_LENGTH_POS, LeanRule::STRING_LENGTH_POS},
+    {PfRule::ARITH_SUM_UB, LeanRule::ARITH_SUM_UB},
+    {PfRule::ARITH_MULT_POS, LeanRule::ARITH_MULT_POS},
+    {PfRule::ARITH_MULT_NEG, LeanRule::ARITH_MULT_NEG},
+    {PfRule::SUBS, LeanRule::SUBS},
+    {PfRule::REWRITE, LeanRule::REWRITE},
+    {PfRule::MACRO_SR_EQ_INTRO, LeanRule::MACRO_SR_EQ_INTRO},
+    {PfRule::MACRO_SR_PRED_INTRO, LeanRule::MACRO_SR_PRED_INTRO},
+    {PfRule::MACRO_SR_PRED_ELIM, LeanRule::MACRO_SR_PRED_ELIM},
+    {PfRule::MACRO_SR_PRED_TRANSFORM, LeanRule::MACRO_SR_PRED_TRANSFORM},
+    {PfRule::DSL_REWRITE, LeanRule::DSL_REWRITE},
+    {PfRule::REMOVE_TERM_FORMULA_AXIOM, LeanRule::REMOVE_TERM_FORMULA_AXIOM},
+    {PfRule::THEORY_LEMMA, LeanRule::THEORY_LEMMA},
+    {PfRule::PREPROCESS_LEMMA, LeanRule::PREPROCESS_LEMMA},
+    {PfRule::THEORY_PREPROCESS, LeanRule::THEORY_PREPROCESS},
+    {PfRule::THEORY_PREPROCESS_LEMMA, LeanRule::THEORY_PREPROCESS_LEMMA},
+    {PfRule::THEORY_EXPAND_DEF, LeanRule::THEORY_EXPAND_DEF},
+    {PfRule::WITNESS_AXIOM, LeanRule::WITNESS_AXIOM},
+    {PfRule::TRUST_REWRITE, LeanRule::TRUST_REWRITE},
+    {PfRule::TRUST_SUBS, LeanRule::TRUST_SUBS},
+    {PfRule::TRUST_SUBS_MAP, LeanRule::TRUST_SUBS_MAP},
+    {PfRule::SAT_REFUTATION, LeanRule::SAT_REFUTATION},
+    {PfRule::MACRO_RESOLUTION, LeanRule::MACRO_RESOLUTION},
+    {PfRule::MACRO_RESOLUTION_TRUST, LeanRule::MACRO_RESOLUTION_TRUST},
+    {PfRule::SPLIT, LeanRule::SPLIT},
+    {PfRule::NOT_EQUIV_ELIM1, LeanRule::NOT_EQUIV_ELIM1},
+    {PfRule::NOT_EQUIV_ELIM2, LeanRule::NOT_EQUIV_ELIM2},
+    {PfRule::XOR_ELIM1, LeanRule::XOR_ELIM1},
+    {PfRule::XOR_ELIM2, LeanRule::XOR_ELIM2},
+    {PfRule::NOT_XOR_ELIM1, LeanRule::NOT_XOR_ELIM1},
+    {PfRule::NOT_XOR_ELIM2, LeanRule::NOT_XOR_ELIM2},
+    {PfRule::ITE_ELIM1, LeanRule::ITE_ELIM1},
+    {PfRule::ITE_ELIM2, LeanRule::ITE_ELIM2},
+    {PfRule::NOT_ITE_ELIM1, LeanRule::NOT_ITE_ELIM1},
+    {PfRule::NOT_ITE_ELIM2, LeanRule::NOT_ITE_ELIM2},
+    {PfRule::CNF_IMPLIES_POS, LeanRule::CNF_IMPLIES_POS},
+    {PfRule::CNF_IMPLIES_NEG1, LeanRule::CNF_IMPLIES_NEG1},
+    {PfRule::CNF_IMPLIES_NEG2, LeanRule::CNF_IMPLIES_NEG2},
+    {PfRule::HO_APP_ENCODE, LeanRule::HO_APP_ENCODE},
+    {PfRule::HO_CONG, LeanRule::HO_CONG},
+    {PfRule::ARRAYS_READ_OVER_WRITE, LeanRule::ARRAYS_READ_OVER_WRITE},
+    {PfRule::ARRAYS_READ_OVER_WRITE_CONTRA,
+     LeanRule::ARRAYS_READ_OVER_WRITE_CONTRA},
+    {PfRule::ARRAYS_READ_OVER_WRITE_1, LeanRule::ARRAYS_READ_OVER_WRITE_1},
+    {PfRule::ARRAYS_EXT, LeanRule::ARRAYS_EXT},
+    {PfRule::ARRAYS_TRUST, LeanRule::ARRAYS_TRUST},
+    {PfRule::BV_BITBLAST, LeanRule::BV_BITBLAST},
+    {PfRule::BV_BITBLAST_CONST, LeanRule::BV_BITBLAST_CONST},
+    {PfRule::BV_BITBLAST_VAR, LeanRule::BV_BITBLAST_VAR},
+    {PfRule::BV_BITBLAST_EQUAL, LeanRule::BV_BITBLAST_EQUAL},
+    {PfRule::BV_BITBLAST_ULT, LeanRule::BV_BITBLAST_ULT},
+    {PfRule::BV_BITBLAST_ULE, LeanRule::BV_BITBLAST_ULE},
+    {PfRule::BV_BITBLAST_UGT, LeanRule::BV_BITBLAST_UGT},
+    {PfRule::BV_BITBLAST_UGE, LeanRule::BV_BITBLAST_UGE},
+    {PfRule::BV_BITBLAST_SLT, LeanRule::BV_BITBLAST_SLT},
+    {PfRule::BV_BITBLAST_SLE, LeanRule::BV_BITBLAST_SLE},
+    {PfRule::BV_BITBLAST_SGT, LeanRule::BV_BITBLAST_SGT},
+    {PfRule::BV_BITBLAST_SGE, LeanRule::BV_BITBLAST_SGE},
+    {PfRule::BV_BITBLAST_NOT, LeanRule::BV_BITBLAST_NOT},
+    {PfRule::BV_BITBLAST_CONCAT, LeanRule::BV_BITBLAST_CONCAT},
+    {PfRule::BV_BITBLAST_AND, LeanRule::BV_BITBLAST_AND},
+    {PfRule::BV_BITBLAST_OR, LeanRule::BV_BITBLAST_OR},
+    {PfRule::BV_BITBLAST_XOR, LeanRule::BV_BITBLAST_XOR},
+    {PfRule::BV_BITBLAST_XNOR, LeanRule::BV_BITBLAST_XNOR},
+    {PfRule::BV_BITBLAST_NAND, LeanRule::BV_BITBLAST_NAND},
+    {PfRule::BV_BITBLAST_NOR, LeanRule::BV_BITBLAST_NOR},
+    {PfRule::BV_BITBLAST_COMP, LeanRule::BV_BITBLAST_COMP},
+    {PfRule::BV_BITBLAST_MULT, LeanRule::BV_BITBLAST_MULT},
+    {PfRule::BV_BITBLAST_PLUS, LeanRule::BV_BITBLAST_PLUS},
+    {PfRule::BV_BITBLAST_SUB, LeanRule::BV_BITBLAST_SUB},
+    {PfRule::BV_BITBLAST_NEG, LeanRule::BV_BITBLAST_NEG},
+    {PfRule::BV_BITBLAST_UDIV, LeanRule::BV_BITBLAST_UDIV},
+    {PfRule::BV_BITBLAST_UREM, LeanRule::BV_BITBLAST_UREM},
+    {PfRule::BV_BITBLAST_SDIV, LeanRule::BV_BITBLAST_SDIV},
+    {PfRule::BV_BITBLAST_SREM, LeanRule::BV_BITBLAST_SREM},
+    {PfRule::BV_BITBLAST_SMOD, LeanRule::BV_BITBLAST_SMOD},
+    {PfRule::BV_BITBLAST_SHL, LeanRule::BV_BITBLAST_SHL},
+    {PfRule::BV_BITBLAST_LSHR, LeanRule::BV_BITBLAST_LSHR},
+    {PfRule::BV_BITBLAST_ASHR, LeanRule::BV_BITBLAST_ASHR},
+    {PfRule::BV_BITBLAST_ULTBV, LeanRule::BV_BITBLAST_ULTBV},
+    {PfRule::BV_BITBLAST_SLTBV, LeanRule::BV_BITBLAST_SLTBV},
+    {PfRule::BV_BITBLAST_ITE, LeanRule::BV_BITBLAST_ITE},
+    {PfRule::BV_BITBLAST_EXTRACT, LeanRule::BV_BITBLAST_EXTRACT},
+    {PfRule::BV_BITBLAST_REPEAT, LeanRule::BV_BITBLAST_REPEAT},
+    {PfRule::BV_BITBLAST_ZERO_EXTEND, LeanRule::BV_BITBLAST_ZERO_EXTEND},
+    {PfRule::BV_BITBLAST_SIGN_EXTEND, LeanRule::BV_BITBLAST_SIGN_EXTEND},
+    {PfRule::BV_BITBLAST_ROTATE_RIGHT, LeanRule::BV_BITBLAST_ROTATE_RIGHT},
+    {PfRule::BV_BITBLAST_ROTATE_LEFT, LeanRule::BV_BITBLAST_ROTATE_LEFT},
+    {PfRule::BV_EAGER_ATOM, LeanRule::BV_EAGER_ATOM},
+    {PfRule::DT_UNIF, LeanRule::DT_UNIF},
+    {PfRule::DT_INST, LeanRule::DT_INST},
+    {PfRule::DT_COLLAPSE, LeanRule::DT_COLLAPSE},
+    {PfRule::DT_SPLIT, LeanRule::DT_SPLIT},
+    {PfRule::DT_CLASH, LeanRule::DT_CLASH},
+    {PfRule::DT_TRUST, LeanRule::DT_TRUST},
+    {PfRule::SKOLEM_INTRO, LeanRule::SKOLEM_INTRO},
+    {PfRule::EXISTS_INTRO, LeanRule::EXISTS_INTRO},
+    {PfRule::SKOLEMIZE, LeanRule::SKOLEMIZE},
+    {PfRule::INSTANTIATE, LeanRule::INSTANTIATE},
+    {PfRule::ALPHA_EQUIV, LeanRule::ALPHA_EQUIV},
+    {PfRule::CONCAT_EQ, LeanRule::CONCAT_EQ},
+    {PfRule::CONCAT_UNIFY, LeanRule::CONCAT_UNIFY},
+    {PfRule::CONCAT_CONFLICT, LeanRule::CONCAT_CONFLICT},
+    {PfRule::CONCAT_SPLIT, LeanRule::CONCAT_SPLIT},
+    {PfRule::CONCAT_CSPLIT, LeanRule::CONCAT_CSPLIT},
+    {PfRule::CONCAT_LPROP, LeanRule::CONCAT_LPROP},
+    {PfRule::CONCAT_CPROP, LeanRule::CONCAT_CPROP},
+    {PfRule::STRING_DECOMPOSE, LeanRule::STRING_DECOMPOSE},
+    {PfRule::STRING_LENGTH_NON_EMPTY, LeanRule::STRING_LENGTH_NON_EMPTY},
+    {PfRule::STRING_REDUCTION, LeanRule::STRING_REDUCTION},
+    {PfRule::STRING_EAGER_REDUCTION, LeanRule::STRING_EAGER_REDUCTION},
+    {PfRule::RE_INTER, LeanRule::RE_INTER},
+    {PfRule::RE_UNFOLD_POS, LeanRule::RE_UNFOLD_POS},
+    {PfRule::RE_UNFOLD_NEG, LeanRule::RE_UNFOLD_NEG},
+    {PfRule::RE_UNFOLD_NEG_CONCAT_FIXED, LeanRule::RE_UNFOLD_NEG_CONCAT_FIXED},
+    {PfRule::RE_ELIM, LeanRule::RE_ELIM},
+    {PfRule::STRING_CODE_INJ, LeanRule::STRING_CODE_INJ},
+    {PfRule::STRING_SEQ_UNIT_INJ, LeanRule::STRING_SEQ_UNIT_INJ},
+    {PfRule::STRING_TRUST, LeanRule::STRING_TRUST},
+    {PfRule::MACRO_ARITH_SCALE_SUM_UB, LeanRule::MACRO_ARITH_SCALE_SUM_UB},
+    {PfRule::INT_TIGHT_UB, LeanRule::INT_TIGHT_UB},
+    {PfRule::INT_TIGHT_LB, LeanRule::INT_TIGHT_LB},
+    {PfRule::ARITH_TRICHOTOMY, LeanRule::ARITH_TRICHOTOMY},
+    {PfRule::ARITH_OP_ELIM_AXIOM, LeanRule::ARITH_OP_ELIM_AXIOM},
+    {PfRule::INT_TRUST, LeanRule::INT_TRUST},
+    {PfRule::ARITH_MULT_SIGN, LeanRule::ARITH_MULT_SIGN},
+    {PfRule::ARITH_MULT_TANGENT, LeanRule::ARITH_MULT_TANGENT},
+    {PfRule::ARITH_TRANS_PI, LeanRule::ARITH_TRANS_PI},
+    {PfRule::ARITH_TRANS_EXP_NEG, LeanRule::ARITH_TRANS_EXP_NEG},
+    {PfRule::ARITH_TRANS_EXP_POSITIVITY, LeanRule::ARITH_TRANS_EXP_POSITIVITY},
+    {PfRule::ARITH_TRANS_EXP_SUPER_LIN, LeanRule::ARITH_TRANS_EXP_SUPER_LIN},
+    {PfRule::ARITH_TRANS_EXP_ZERO, LeanRule::ARITH_TRANS_EXP_ZERO},
+    {PfRule::ARITH_TRANS_EXP_APPROX_ABOVE_NEG,
+     LeanRule::ARITH_TRANS_EXP_APPROX_ABOVE_NEG},
+    {PfRule::ARITH_TRANS_EXP_APPROX_ABOVE_POS,
+     LeanRule::ARITH_TRANS_EXP_APPROX_ABOVE_POS},
+    {PfRule::ARITH_TRANS_EXP_APPROX_BELOW,
+     LeanRule::ARITH_TRANS_EXP_APPROX_BELOW},
+    {PfRule::ARITH_TRANS_SINE_BOUNDS, LeanRule::ARITH_TRANS_SINE_BOUNDS},
+    {PfRule::ARITH_TRANS_SINE_SHIFT, LeanRule::ARITH_TRANS_SINE_SHIFT},
+    {PfRule::ARITH_TRANS_SINE_SYMMETRY, LeanRule::ARITH_TRANS_SINE_SYMMETRY},
+    {PfRule::ARITH_TRANS_SINE_TANGENT_ZERO,
+     LeanRule::ARITH_TRANS_SINE_TANGENT_ZERO},
+    {PfRule::ARITH_TRANS_SINE_TANGENT_PI,
+     LeanRule::ARITH_TRANS_SINE_TANGENT_PI},
+    {PfRule::ARITH_TRANS_SINE_APPROX_ABOVE_NEG,
+     LeanRule::ARITH_TRANS_SINE_APPROX_ABOVE_NEG},
+    {PfRule::ARITH_TRANS_SINE_APPROX_ABOVE_POS,
+     LeanRule::ARITH_TRANS_SINE_APPROX_ABOVE_POS},
+    {PfRule::ARITH_TRANS_SINE_APPROX_BELOW_NEG,
+     LeanRule::ARITH_TRANS_SINE_APPROX_BELOW_NEG},
+    {PfRule::ARITH_TRANS_SINE_APPROX_BELOW_POS,
+     LeanRule::ARITH_TRANS_SINE_APPROX_BELOW_POS},
+    {PfRule::ARITH_NL_CAD_DIRECT, LeanRule::ARITH_NL_CAD_DIRECT},
+    {PfRule::ARITH_NL_CAD_RECURSIVE, LeanRule::ARITH_NL_CAD_RECURSIVE},
+    {PfRule::LFSC_RULE, LeanRule::LFSC_RULE},
+    {PfRule::LEAN_RULE, LeanRule::LEAN_RULE},
+    {PfRule::VERIT_RULE, LeanRule::VERIT_RULE},
+    {PfRule::UNKNOWN, LeanRule::UNKNOWN}};
 
 LeanProofPostprocess::LeanProofPostprocess(ProofNodeManager* pnm)
     : d_cb(new LeanProofPostprocessCallback(pnm)),
@@ -112,7 +270,9 @@ Node LeanProofPostprocessCallback::mkPrintableOp(Node n)
     NodeManager* nm = NodeManager::currentNM();
     switch (k)
     {
-      case kind::NOT: { return nm->mkBoundVar("notConst", nm->sExprType());
+      case kind::NOT:
+      {
+        return nm->mkBoundVar("notConst", nm->sExprType());
       }
       case kind::EQUAL:
       {
@@ -177,23 +337,203 @@ bool LeanProofPostprocessCallback::update(Node res,
   NodeManager* nm = NodeManager::currentNM();
   switch (id)
   {
+    case PfRule::ASSUME:
+    case PfRule::SUBS:
+    case PfRule::REWRITE:
+    case PfRule::MACRO_SR_EQ_INTRO:
+    case PfRule::MACRO_SR_PRED_INTRO:
+    case PfRule::MACRO_SR_PRED_ELIM:
+    case PfRule::MACRO_SR_PRED_TRANSFORM:
+    case PfRule::DSL_REWRITE:
+    case PfRule::REMOVE_TERM_FORMULA_AXIOM:
+    case PfRule::THEORY_LEMMA:
+    case PfRule::PREPROCESS_LEMMA:
+    case PfRule::THEORY_PREPROCESS:
+    case PfRule::THEORY_PREPROCESS_LEMMA:
+    case PfRule::THEORY_EXPAND_DEF:
+    case PfRule::WITNESS_AXIOM:
+    case PfRule::TRUST_REWRITE:
+    case PfRule::TRUST_SUBS:
+    case PfRule::TRUST_SUBS_MAP:
+    case PfRule::SAT_REFUTATION:
+    case PfRule::MACRO_RESOLUTION:
+    case PfRule::MACRO_RESOLUTION_TRUST:
+    case PfRule::SPLIT:
+    case PfRule::NOT_EQUIV_ELIM1:
+    case PfRule::NOT_EQUIV_ELIM2:
+    case PfRule::XOR_ELIM1:
+    case PfRule::XOR_ELIM2:
+    case PfRule::NOT_XOR_ELIM1:
+    case PfRule::NOT_XOR_ELIM2:
+    case PfRule::ITE_ELIM1:
+    case PfRule::ITE_ELIM2:
+    case PfRule::NOT_ITE_ELIM1:
+    case PfRule::NOT_ITE_ELIM2:
+    case PfRule::CNF_IMPLIES_POS:
+    case PfRule::CNF_IMPLIES_NEG1:
+    case PfRule::CNF_IMPLIES_NEG2:
+    case PfRule::HO_APP_ENCODE:
+    case PfRule::HO_CONG:
+    case PfRule::ARRAYS_READ_OVER_WRITE:
+    case PfRule::ARRAYS_READ_OVER_WRITE_CONTRA:
+    case PfRule::ARRAYS_READ_OVER_WRITE_1:
+    case PfRule::ARRAYS_EXT:
+    case PfRule::ARRAYS_TRUST:
+    case PfRule::BV_BITBLAST:
+    case PfRule::BV_BITBLAST_CONST:
+    case PfRule::BV_BITBLAST_VAR:
+    case PfRule::BV_BITBLAST_EQUAL:
+    case PfRule::BV_BITBLAST_ULT:
+    case PfRule::BV_BITBLAST_ULE:
+    case PfRule::BV_BITBLAST_UGT:
+    case PfRule::BV_BITBLAST_UGE:
+    case PfRule::BV_BITBLAST_SLT:
+    case PfRule::BV_BITBLAST_SLE:
+    case PfRule::BV_BITBLAST_SGT:
+    case PfRule::BV_BITBLAST_SGE:
+    case PfRule::BV_BITBLAST_NOT:
+    case PfRule::BV_BITBLAST_CONCAT:
+    case PfRule::BV_BITBLAST_AND:
+    case PfRule::BV_BITBLAST_OR:
+    case PfRule::BV_BITBLAST_XOR:
+    case PfRule::BV_BITBLAST_XNOR:
+    case PfRule::BV_BITBLAST_NAND:
+    case PfRule::BV_BITBLAST_NOR:
+    case PfRule::BV_BITBLAST_COMP:
+    case PfRule::BV_BITBLAST_MULT:
+    case PfRule::BV_BITBLAST_PLUS:
+    case PfRule::BV_BITBLAST_SUB:
+    case PfRule::BV_BITBLAST_NEG:
+    case PfRule::BV_BITBLAST_UDIV:
+    case PfRule::BV_BITBLAST_UREM:
+    case PfRule::BV_BITBLAST_SDIV:
+    case PfRule::BV_BITBLAST_SREM:
+    case PfRule::BV_BITBLAST_SMOD:
+    case PfRule::BV_BITBLAST_SHL:
+    case PfRule::BV_BITBLAST_LSHR:
+    case PfRule::BV_BITBLAST_ASHR:
+    case PfRule::BV_BITBLAST_ULTBV:
+    case PfRule::BV_BITBLAST_SLTBV:
+    case PfRule::BV_BITBLAST_ITE:
+    case PfRule::BV_BITBLAST_EXTRACT:
+    case PfRule::BV_BITBLAST_REPEAT:
+    case PfRule::BV_BITBLAST_ZERO_EXTEND:
+    case PfRule::BV_BITBLAST_SIGN_EXTEND:
+    case PfRule::BV_BITBLAST_ROTATE_RIGHT:
+    case PfRule::BV_BITBLAST_ROTATE_LEFT:
+    case PfRule::BV_EAGER_ATOM:
+    case PfRule::DT_UNIF:
+    case PfRule::DT_INST:
+    case PfRule::DT_COLLAPSE:
+    case PfRule::DT_SPLIT:
+    case PfRule::DT_CLASH:
+    case PfRule::DT_TRUST:
+    case PfRule::SKOLEM_INTRO:
+    case PfRule::EXISTS_INTRO:
+    case PfRule::SKOLEMIZE:
+    case PfRule::INSTANTIATE:
+    case PfRule::ALPHA_EQUIV:
+    case PfRule::CONCAT_EQ:
+    case PfRule::CONCAT_UNIFY:
+    case PfRule::CONCAT_CONFLICT:
+    case PfRule::CONCAT_SPLIT:
+    case PfRule::CONCAT_CSPLIT:
+    case PfRule::CONCAT_LPROP:
+    case PfRule::CONCAT_CPROP:
+    case PfRule::STRING_DECOMPOSE:
+    case PfRule::STRING_LENGTH_NON_EMPTY:
+    case PfRule::STRING_REDUCTION:
+    case PfRule::STRING_EAGER_REDUCTION:
+    case PfRule::RE_INTER:
+    case PfRule::RE_UNFOLD_POS:
+    case PfRule::RE_UNFOLD_NEG:
+    case PfRule::RE_UNFOLD_NEG_CONCAT_FIXED:
+    case PfRule::RE_ELIM:
+    case PfRule::STRING_CODE_INJ:
+    case PfRule::STRING_SEQ_UNIT_INJ:
+    case PfRule::STRING_TRUST:
+    case PfRule::MACRO_ARITH_SCALE_SUM_UB:
+    case PfRule::INT_TIGHT_UB:
+    case PfRule::INT_TIGHT_LB:
+    case PfRule::ARITH_TRICHOTOMY:
+    case PfRule::ARITH_OP_ELIM_AXIOM:
+    case PfRule::INT_TRUST:
+    case PfRule::ARITH_MULT_SIGN:
+    case PfRule::ARITH_MULT_TANGENT:
+    case PfRule::ARITH_TRANS_PI:
+    case PfRule::ARITH_TRANS_EXP_NEG:
+    case PfRule::ARITH_TRANS_EXP_POSITIVITY:
+    case PfRule::ARITH_TRANS_EXP_SUPER_LIN:
+    case PfRule::ARITH_TRANS_EXP_ZERO:
+    case PfRule::ARITH_TRANS_EXP_APPROX_ABOVE_NEG:
+    case PfRule::ARITH_TRANS_EXP_APPROX_ABOVE_POS:
+    case PfRule::ARITH_TRANS_EXP_APPROX_BELOW:
+    case PfRule::ARITH_TRANS_SINE_BOUNDS:
+    case PfRule::ARITH_TRANS_SINE_SHIFT:
+    case PfRule::ARITH_TRANS_SINE_SYMMETRY:
+    case PfRule::ARITH_TRANS_SINE_TANGENT_ZERO:
+    case PfRule::ARITH_TRANS_SINE_TANGENT_PI:
+    case PfRule::ARITH_TRANS_SINE_APPROX_ABOVE_NEG:
+    case PfRule::ARITH_TRANS_SINE_APPROX_ABOVE_POS:
+    case PfRule::ARITH_TRANS_SINE_APPROX_BELOW_NEG:
+    case PfRule::ARITH_TRANS_SINE_APPROX_BELOW_POS:
+    case PfRule::ARITH_NL_CAD_DIRECT:
+    case PfRule::ARITH_NL_CAD_RECURSIVE:
+    case PfRule::LFSC_RULE:
+    case PfRule::LEAN_RULE:
+    case PfRule::VERIT_RULE:
+    case PfRule::UNKNOWN:
+
     // create clausal conclusion. Shortcut if before scope
     case PfRule::IMPLIES_ELIM:
     {
       // regular case, just turn conclusion into clause
-      addLeanStep(res,
-                  LeanRule::IMPLIES_ELIM,
-                  Node::null(),
-                  children,
-                  args,
-                  *cdp);
+      addLeanStep(
+          res, LeanRule::IMPLIES_ELIM, Node::null(), children, args, *cdp);
       break;
     }
+    case PfRule::ARITH_SUM_UB:
+    {
+      addLeanStep(
+          res, LeanRule::ARITH_SUM_UB, Node::null(), children, args, *cdp);
+      break;
+    }
+    case PfRule::ARITH_MULT_POS:
+    {
+      addLeanStep(
+          res, LeanRule::ARITH_MULT_POS, Node::null(), children, args, *cdp);
+      break;
+    }
+    case PfRule::ARITH_MULT_NEG:
+    {
+      addLeanStep(
+          res, LeanRule::ARITH_MULT_NEG, Node::null(), children, args, *cdp);
+      break;
+    }
+
+    case PfRule::STRING_LENGTH_POS:
+    {
+      addLeanStep(
+          res, LeanRule::STRING_LENGTH_POS, Node::null(), children, args, *cdp);
+      break;
+    }
+    case PfRule::NOT_AND:
+    {
+      addLeanStep(res, LeanRule::NOT_AND, Node::null(), children, args, *cdp);
+      break;
+    }
+    case PfRule::EVALUATE:
+    {
+      addLeanStep(res, LeanRule::EVALUATE, Node::null(), children, args, *cdp);
+      break;
+    }
+
     // create clausal conclusion
     case PfRule::SCOPE:
     {
       bool negation = false;
-      // new result is an or with all assumptions negated and the original conclusion
+      // new result is an or with all assumptions negated and the original
+      // conclusion
       std::vector<Node> newResChildren;
       for (const Node& n : args)
       {
@@ -210,12 +550,7 @@ bool LeanProofPostprocessCallback::update(Node res,
         newResChildren.push_back(res[1]);
       }
       Node newRes = nm->mkNode(kind::OR, newResChildren);
-      addLeanStep(newRes,
-                  LeanRule::SCOPE,
-                  Node::null(),
-                  children,
-                  args,
-                  *cdp);
+      addLeanStep(newRes, LeanRule::SCOPE, Node::null(), children, args, *cdp);
       // add a lifting step from the OR above to the original conclusion. It
       // takes as arguments the number of assumptions and subproof conclusion
       addLeanStep(
@@ -273,7 +608,6 @@ bool LeanProofPostprocessCallback::update(Node res,
     case PfRule::CNF_ITE_NEG1:
     case PfRule::CNF_ITE_NEG2:
     case PfRule::CNF_ITE_NEG3:
-    case PfRule::NOT_AND:
     case PfRule::EQUIV_ELIM1:
     case PfRule::EQUIV_ELIM2:
     {
@@ -376,7 +710,6 @@ bool LeanProofPostprocessCallback::update(Node res,
                         {},
                         *cdp);
             currEq = nextEq;
-
           }
         }
         break;
@@ -740,262 +1073,268 @@ bool LeanProofPostprocessCallback::update(Node res,
                   children,
                   {nm->mkNode(kind::SEXPR, resArgs), args[1]},
                   *cdp);
-      break;
     }
-    default:
-    {
-      Trace("test-lean") << "Unhandled rule " << id << "\n";
-      addLeanStep(res, LeanRule::UNKNOWN, Node::null(), children, args, *cdp);
-    }
-  };
-  return true;
-}
+      default:
+      {
+        Trace("test-lean") << "Unhandled rule " << id << "\n";
+        addLeanStep(res, LeanRule::UNKNOWN, Node::null(), children, args, *cdp);
+      }
+    };
+      return true;
+  }
 
-LeanProofPostprocessClConnectCallback::LeanProofPostprocessClConnectCallback(
-    ProofNodeManager* pnm)
-    : LeanProofPostprocessCallback(pnm)
-{
-  // init conversion rules
-  NodeManager* nm = NodeManager::currentNM();
-  d_conversionRules = {
-      nm->mkConst<Rational>(static_cast<uint32_t>(LeanRule::CL_OR)),
-      nm->mkConst<Rational>(static_cast<uint32_t>(LeanRule::CL_ASSUME)),
-      nm->mkConst<Rational>(static_cast<uint32_t>(LeanRule::TH_ASSUME)),
-  };
-  // init clausal rules
-  d_clausalRules = {LeanRule::R0,
-                    LeanRule::R0_PARTIAL,
-                    LeanRule::R1,
-                    LeanRule::R1_PARTIAL,
-                    LeanRule::FACTORING,
-                    LeanRule::REORDER,
-                    LeanRule::CNF_AND_POS,
-                    LeanRule::CNF_AND_NEG,
-                    LeanRule::CNF_IMPLIES_POS,
-                    LeanRule::CNF_IMPLIES_NEG1,
-                    LeanRule::CNF_IMPLIES_NEG2,
-                    LeanRule::CNF_EQUIV_POS1,
-                    LeanRule::CNF_EQUIV_POS2,
-                    LeanRule::CNF_EQUIV_NEG1,
-                    LeanRule::CNF_EQUIV_NEG2,
-                    LeanRule::CNF_XOR_POS1,
-                    LeanRule::CNF_XOR_POS2,
-                    LeanRule::CNF_XOR_NEG1,
-                    LeanRule::CNF_XOR_NEG2,
-                    LeanRule::CNF_ITE_POS1,
-                    LeanRule::CNF_ITE_POS2,
-                    LeanRule::CNF_ITE_POS3,
-                    LeanRule::CNF_ITE_NEG1,
-                    LeanRule::CNF_ITE_NEG2,
-                    LeanRule::CNF_ITE_NEG3};
-  d_resRules = {
-      LeanRule::R0, LeanRule::R0_PARTIAL, LeanRule::R1, LeanRule::R1_PARTIAL};
-}
-
-LeanProofPostprocessClConnectCallback::~LeanProofPostprocessClConnectCallback()
-{
-}
-
-bool LeanProofPostprocessClConnectCallback::shouldUpdate(
-    std::shared_ptr<ProofNode> pn,
-    const std::vector<Node>& fa,
-    bool& continueUpdate)
-{
-  // ignore non-lean rules and the steps which are introduce here: CL_ASSUME,
-  // CL_OR, TH_ASSUME
-  if (pn->getRule() != PfRule::LEAN_RULE
-      || d_conversionRules.find(pn->getArguments()[0])
-             != d_conversionRules.end())
+  LeanProofPostprocessClConnectCallback::LeanProofPostprocessClConnectCallback(
+      ProofNodeManager* pnm)
+      : LeanProofPostprocessCallback(pnm)
   {
+    // init conversion rules
+    NodeManager* nm = NodeManager::currentNM();
+    d_conversionRules = {
+        nm->mkConst<Rational>(static_cast<uint32_t>(LeanRule::CL_OR)),
+        nm->mkConst<Rational>(static_cast<uint32_t>(LeanRule::CL_ASSUME)),
+        nm->mkConst<Rational>(static_cast<uint32_t>(LeanRule::TH_ASSUME)),
+    };
+    // init clausal rules
+    d_clausalRules = {LeanRule::R0,
+                      LeanRule::R0_PARTIAL,
+                      LeanRule::R1,
+                      LeanRule::R1_PARTIAL,
+                      LeanRule::FACTORING,
+                      LeanRule::REORDER,
+                      LeanRule::CNF_AND_POS,
+                      LeanRule::CNF_AND_NEG,
+                      LeanRule::CNF_IMPLIES_POS,
+                      LeanRule::CNF_IMPLIES_NEG1,
+                      LeanRule::CNF_IMPLIES_NEG2,
+                      LeanRule::CNF_EQUIV_POS1,
+                      LeanRule::CNF_EQUIV_POS2,
+                      LeanRule::CNF_EQUIV_NEG1,
+                      LeanRule::CNF_EQUIV_NEG2,
+                      LeanRule::CNF_XOR_POS1,
+                      LeanRule::CNF_XOR_POS2,
+                      LeanRule::CNF_XOR_NEG1,
+                      LeanRule::CNF_XOR_NEG2,
+                      LeanRule::CNF_ITE_POS1,
+                      LeanRule::CNF_ITE_POS2,
+                      LeanRule::CNF_ITE_POS3,
+                      LeanRule::CNF_ITE_NEG1,
+                      LeanRule::CNF_ITE_NEG2,
+                      LeanRule::CNF_ITE_NEG3};
+    d_resRules = {
+        LeanRule::R0, LeanRule::R0_PARTIAL, LeanRule::R1, LeanRule::R1_PARTIAL};
+  }
+
+  LeanProofPostprocessClConnectCallback::
+      ~LeanProofPostprocessClConnectCallback()
+  {
+  }
+
+  bool LeanProofPostprocessClConnectCallback::shouldUpdate(
+      std::shared_ptr<ProofNode> pn,
+      const std::vector<Node>& fa,
+      bool& continueUpdate)
+  {
+    // ignore non-lean rules and the steps which are introduce here: CL_ASSUME,
+    // CL_OR, TH_ASSUME
+    if (pn->getRule() != PfRule::LEAN_RULE
+        || d_conversionRules.find(pn->getArguments()[0])
+               != d_conversionRules.end())
+    {
+      return false;
+    }
+    if (processed.find(pn.get()) == processed.end())
+    {
+      processed.insert(pn.get());
+      return true;
+    }
     return false;
   }
-  if (processed.find(pn.get()) == processed.end())
-  {
-    processed.insert(pn.get());
-    return true;
-  }
-  return false;
-}
 
-bool LeanProofPostprocessClConnectCallback::update(
-    Node res,
-    PfRule id,
-    const std::vector<Node>& children,
-    const std::vector<Node>& args,
-    CDProof* cdp,
-    bool& continueUpdate)
-{
-  NodeManager* nm = NodeManager::currentNM();
-  LeanRule rule = getLeanRule(args[0]);
-  Trace("test-lean") << "ClConnectUpdating rule:\nres: " << res
-                     << "\nid: " << rule << "\nchildren: " << children
-                     << "\nargs: " << args << "\n";
-  bool updated = false;
-  if (d_clausalRules.find(rule) != d_clausalRules.end())
+  bool LeanProofPostprocessClConnectCallback::update(
+      Node res,
+      PfRule id,
+      const std::vector<Node>& children,
+      const std::vector<Node>& args,
+      CDProof* cdp,
+      bool& continueUpdate)
   {
-    std::vector<Node> newChildren{children.begin(), children.end()};
-    // rule id, original conclusion, clause conclusion
-    AlwaysAssert(args.size() >= 3);
-    // resolution rule need further to determine whether each premise is a
-    // singleton. This is information was computed in the previous pass and just
-    // needs to be checked now
-    if (d_resRules.find(rule) != d_resRules.end())
+    NodeManager* nm = NodeManager::currentNM();
+    LeanRule rule = getLeanRule(args[0]);
+    Trace("test-lean") << "ClConnectUpdating rule:\nres: " << res
+                       << "\nid: " << rule << "\nchildren: " << children
+                       << "\nargs: " << args << "\n";
+    bool updated = false;
+    if (d_clausalRules.find(rule) != d_clausalRules.end())
     {
-      // pivot, prem1singleton, prem2singleton
-      AlwaysAssert(args.size() == 6);
-      AlwaysAssert(children.size() == 2);
-      for (size_t i = 0; i < 2; ++i)
+      std::vector<Node> newChildren{children.begin(), children.end()};
+      // rule id, original conclusion, clause conclusion
+      AlwaysAssert(args.size() >= 3);
+      // resolution rule need further to determine whether each premise is a
+      // singleton. This is information was computed in the previous pass and
+      // just needs to be checked now
+      if (d_resRules.find(rule) != d_resRules.end())
       {
-        // check if conclusion is a term
+        // pivot, prem1singleton, prem2singleton
+        AlwaysAssert(args.size() == 6);
+        AlwaysAssert(children.size() == 2);
+        for (size_t i = 0; i < 2; ++i)
+        {
+          // check if conclusion is a term
+          std::shared_ptr<ProofNode> childPf = cdp->getProofFor(children[i]);
+          AlwaysAssert(childPf->getRule() == PfRule::ASSUME
+                       || childPf->getArguments().size() >= 3)
+              << "childPf is " << *childPf.get();
+          if (childPf->getRule() != PfRule::ASSUME
+              && !childPf->getArguments()[2].isNull())
+          {
+            continue;
+          }
+          // turn into clause. Check if it's used as a singleton or not
+          bool isSingleton = args[4 + i] == d_true;
+          Node newChild;
+          LeanRule childRule;
+          if (isSingleton)
+          {
+            // add clAssume step
+            newChild = nm->mkNode(kind::SEXPR, children[i]);
+            childRule = LeanRule::CL_ASSUME;
+          }
+          else
+          {
+            // Add clOr step
+            std::vector<Node> lits{children[i].begin(), children[i].end()};
+            newChild = nm->mkNode(kind::SEXPR, lits);
+            childRule = LeanRule::CL_OR;
+          }
+          addLeanStep(newChild, childRule, newChild, {children[i]}, {}, *cdp);
+          newChildren[i] = newChild;
+        }
+        // regardless of possible changes above, delete the excess arguments
+        cdp->addStep(res, id, newChildren, {args.begin(), args.begin() + 4});
+        return true;
+      }
+      // other rules either do not have premises or are applied on non-singleton
+      // clauses, so always use CL_OR if premise is a term
+      for (size_t i = 0, size = children.size(); i < size; ++i)
+      {
         std::shared_ptr<ProofNode> childPf = cdp->getProofFor(children[i]);
         AlwaysAssert(childPf->getRule() == PfRule::ASSUME
                      || childPf->getArguments().size() >= 3)
             << "childPf is " << *childPf.get();
+        // child is already clausal
         if (childPf->getRule() != PfRule::ASSUME
             && !childPf->getArguments()[2].isNull())
         {
           continue;
         }
-        // turn into clause. Check if it's used as a singleton or not
-        bool isSingleton = args[4 + i] == d_true;
-        Node newChild;
-        LeanRule childRule;
-        if (isSingleton)
-        {
-          // add clAssume step
-          newChild = nm->mkNode(kind::SEXPR, children[i]);
-          childRule = LeanRule::CL_ASSUME;
-        }
-        else
-        {
-          // Add clOr step
-          std::vector<Node> lits{children[i].begin(), children[i].end()};
-          newChild = nm->mkNode(kind::SEXPR, lits);
-          childRule = LeanRule::CL_OR;
-        }
-        addLeanStep(newChild, childRule, newChild, {children[i]}, {}, *cdp);
-        newChildren[i] = newChild;
+        // Add clOr step
+        Assert(children[i].getKind() == kind::OR);
+        std::vector<Node> lits{children[i].begin(), children[i].end()};
+        newChildren[i] = nm->mkNode(kind::SEXPR, lits);
+        addLeanStep(newChildren[i],
+                    LeanRule::CL_OR,
+                    newChildren[i],
+                    {children[i]},
+                    {},
+                    *cdp);
+        updated = true;
       }
-      // regardless of possible changes above, delete the excess arguments
-      cdp->addStep(res, id, newChildren, {args.begin(), args.begin() + 4});
-      return true;
-    }
-    // other rules either do not have premises or are applied on non-singleton
-    // clauses, so always use CL_OR if premise is a term
-    for (size_t i = 0, size = children.size(); i < size; ++i)
-    {
-      std::shared_ptr<ProofNode> childPf = cdp->getProofFor(children[i]);
-      AlwaysAssert(childPf->getRule() == PfRule::ASSUME
-                   || childPf->getArguments().size() >= 3)
-          << "childPf is " << *childPf.get();
-      // child is already clausal
-      if (childPf->getRule() != PfRule::ASSUME
-          && !childPf->getArguments()[2].isNull())
+      if (updated)
       {
-        continue;
+        cdp->addStep(res, id, newChildren, args);
       }
-      // Add clOr step
-      Assert(children[i].getKind() == kind::OR);
-      std::vector<Node> lits{children[i].begin(), children[i].end()};
-      newChildren[i] = nm->mkNode(kind::SEXPR, lits);
-      addLeanStep(newChildren[i],
-                  LeanRule::CL_OR,
-                  newChildren[i],
-                  {children[i]},
-                  {},
-                  *cdp);
-      updated = true;
     }
-    if (updated)
+    else
     {
-      cdp->addStep(res, id, newChildren, args);
+      Trace("test-lean") << "..not a clausal rule\n";
+      for (size_t i = 0, size = children.size(); i < size; ++i)
+      {
+        std::shared_ptr<ProofNode> childPf = cdp->getProofFor(children[i]);
+        const std::vector<Node>& argsOfChild = childPf->getArguments();
+        AlwaysAssert(childPf->getRule() == PfRule::ASSUME
+                     || argsOfChild.size() >= 3)
+            << "childPf is " << *childPf.get();
+        // child is already not clausal
+        if (childPf->getRule() == PfRule::ASSUME || argsOfChild[2].isNull())
+        {
+          continue;
+        }
+        Trace("test-lean-pf")
+            << "..child " << i << " is clausal: " << *childPf.get() << "\n";
+        AlwaysAssert(argsOfChild[2].getKind() == kind::SEXPR);
+        // #if CVC5_ASSERTIONS
+        // if singleton, must be the same. Otherwise either children[i] must be
+        // an or and the arguments must be the same or it's the empty clause,
+        // false
+        if (argsOfChild[2][0] != children[i])
+        {
+          if (children[i].getKind() == kind::OR)
+          {
+            std::vector<Node> lits{argsOfChild[2].begin(),
+                                   argsOfChild[2].end()};
+            AlwaysAssert(children[i] == nm->mkNode(kind::OR, lits));
+          }
+          else
+          {
+            AlwaysAssert(children[i] == d_false);
+          }
+        }
+        // #endif
+        // I have to update the child proof, since newChildren[i] is actually
+        // equal to the children proof result. So this is step has no effect.
+        // need to pass proof of children to cdp
+        std::vector<Node> childrenOfChild;
+        const std::vector<std::shared_ptr<ProofNode>>& childrenPfsOfChild =
+            childPf->getChildren();
+        for (const std::shared_ptr<ProofNode>& cpoc : childrenPfsOfChild)
+        {
+          childrenOfChild.push_back(cpoc->getResult());
+          // store in the proof
+          cdp->addProof(cpoc);
+        }
+        std::vector<Node> newArgs{
+            argsOfChild[0], argsOfChild[2], argsOfChild[2]};
+        newArgs.insert(
+            newArgs.end(), argsOfChild.begin() + 3, argsOfChild.end());
+        Trace("test-lean") << "..adding step for " << argsOfChild[2] << " from "
+                           << childrenOfChild << " with args " << newArgs
+                           << "\n";
+        cdp->addStep(
+            argsOfChild[2], PfRule::LEAN_RULE, childrenOfChild, newArgs);
+        // avoid trying to update this step
+        // processed.insert(cdp->getProofFor(argsOfChild[2]).get());
+        std::vector<Node> replaceArgs{
+            nm->mkConst<Rational>(static_cast<uint32_t>(LeanRule::TH_ASSUME)),
+            children[i],
+            Node::null()};
+        Trace("test-lean") << "..adding step for " << children[i] << " from "
+                           << argsOfChild[2] << " with args " << replaceArgs
+                           << "\n";
+        cdp->addStep(children[i],
+                     PfRule::LEAN_RULE,
+                     {argsOfChild[2]},
+                     replaceArgs,
+                     true,
+                     CDPOverwrite::ALWAYS);
+        // Add thAssume step
+        updated = true;
+      }
+      if (updated)
+      {
+        cdp->addStep(res, id, children, args);
+      }
     }
+    return updated;
   }
-  else
-  {
-    Trace("test-lean") << "..not a clausal rule\n";
-    for (size_t i = 0, size = children.size(); i < size; ++i)
-    {
-      std::shared_ptr<ProofNode> childPf = cdp->getProofFor(children[i]);
-      const std::vector<Node>& argsOfChild = childPf->getArguments();
-      AlwaysAssert(childPf->getRule() == PfRule::ASSUME
-                   || argsOfChild.size() >= 3)
-          << "childPf is " << *childPf.get();
-      // child is already not clausal
-      if (childPf->getRule() == PfRule::ASSUME || argsOfChild[2].isNull())
-      {
-        continue;
-      }
-      Trace("test-lean-pf") << "..child " << i << " is clausal: " << *childPf.get()
-                         << "\n";
-      AlwaysAssert(argsOfChild[2].getKind() == kind::SEXPR);
-      // #if CVC5_ASSERTIONS
-      // if singleton, must be the same. Otherwise either children[i] must be an or and
-      // the arguments must be the same or it's the empty clause, false
-      if (argsOfChild[2][0] != children[i])
-      {
-        if (children[i].getKind() == kind::OR)
-        {
-          std::vector<Node> lits{argsOfChild[2].begin(), argsOfChild[2].end()};
-          AlwaysAssert(children[i] == nm->mkNode(kind::OR, lits));
-        }
-        else
-        {
-          AlwaysAssert(children[i] == d_false);
-        }
-      }
-      // #endif
-      // I have to update the child proof, since newChildren[i] is actually
-      // equal to the children proof result. So this is step has no effect.
-      // need to pass proof of children to cdp
-      std::vector<Node> childrenOfChild;
-      const std::vector<std::shared_ptr<ProofNode>>& childrenPfsOfChild =
-          childPf->getChildren();
-      for (const std::shared_ptr<ProofNode>& cpoc : childrenPfsOfChild)
-      {
-        childrenOfChild.push_back(cpoc->getResult());
-        // store in the proof
-        cdp->addProof(cpoc);
-      }
-      std::vector<Node> newArgs{argsOfChild[0], argsOfChild[2], argsOfChild[2]};
-      newArgs.insert(newArgs.end(), argsOfChild.begin() + 3, argsOfChild.end());
-      Trace("test-lean") << "..adding step for " << argsOfChild[2] << " from "
-                         << childrenOfChild << " with args " << newArgs << "\n";
-      cdp->addStep(argsOfChild[2], PfRule::LEAN_RULE, childrenOfChild, newArgs);
-      // avoid trying to update this step
-      // processed.insert(cdp->getProofFor(argsOfChild[2]).get());
-      std::vector<Node> replaceArgs{
-          nm->mkConst<Rational>(static_cast<uint32_t>(LeanRule::TH_ASSUME)),
-          children[i],
-          Node::null()};
-      Trace("test-lean") << "..adding step for " << children[i] << " from "
-                         << argsOfChild[2] << " with args " << replaceArgs
-                         << "\n";
-      cdp->addStep(children[i],
-                   PfRule::LEAN_RULE,
-                   {argsOfChild[2]},
-                   replaceArgs,
-                   true,
-                   CDPOverwrite::ALWAYS);
-      // Add thAssume step
-      updated = true;
-    }
-    if (updated)
-    {
-      cdp->addStep(res, id, children, args);
-    }
-  }
-  return updated;
-}
 
-void LeanProofPostprocess::process(std::shared_ptr<ProofNode> pf)
-{
-  ProofNodeUpdater updater(d_pnm, *(d_cb.get()), false, false, false);
-  updater.process(pf);
-  ProofNodeUpdater updaterCl(d_pnm, *(d_cbCl.get()), false, false, false);
-  // we don't need to convert the final scope, which has been lifted
-  updaterCl.process(pf->getChildren()[0]->getChildren()[0]);
-};
+  void LeanProofPostprocess::process(std::shared_ptr<ProofNode> pf)
+  {
+    ProofNodeUpdater updater(d_pnm, *(d_cb.get()), false, false, false);
+    updater.process(pf);
+    ProofNodeUpdater updaterCl(d_pnm, *(d_cbCl.get()), false, false, false);
+    // we don't need to convert the final scope, which has been lifted
+    updaterCl.process(pf->getChildren()[0]->getChildren()[0]);
+  };
 
 }  // namespace proof
 }  // namespace cvc5
